@@ -11,6 +11,8 @@ import { QuickProfileComponent } from './quick-profile/quick-profile.component';
 import { QuickProfileDetailsComponent } from './quick-profile-details/quick-profile-details.component';
 import { AttivitaComponent } from './attivita/attivita.component';
 import { AttivitaDetailsComponent } from './attivita-details/attivita-details.component';
+import { IndicatoriComponent } from './indicatori/indicatori.component';
+import { IndicatoriDetailsComponent } from './indicatori-details/indicatori-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AttivitaDetailsComponent } from './attivita-details/attivita-details.co
     QuickProfileComponent,
     QuickProfileDetailsComponent,
     AttivitaComponent,
-    AttivitaDetailsComponent
+    AttivitaDetailsComponent,
+    IndicatoriComponent,
+    IndicatoriDetailsComponent
   ],
   imports: [
     BrowserModule,
