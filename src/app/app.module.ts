@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { WidgetComponent } from './widget/widget.component';
 import { AnagraficaComponent } from './anagrafica/anagrafica.component';
 import { AnagraficaDetailsComponent } from './anagrafica-details/anagrafica-details.component';
+import { QuickProfileComponent } from './quick-profile/quick-profile.component';
+import { QuickProfileDetailsComponent } from './quick-profile-details/quick-profile-details.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { AnagraficaDetailsComponent } from './anagrafica-details/anagrafica-deta
     HomeComponent,
     WidgetComponent,
     AnagraficaComponent,
-    AnagraficaDetailsComponent
+    AnagraficaDetailsComponent,
+    QuickProfileComponent,
+    QuickProfileDetailsComponent
   ],
   imports: [
     BrowserModule,

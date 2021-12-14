@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AnagraficaDetailsComponent } from './anagrafica-details/anagrafica-details.component';
 import { HomeComponent } from './home/home.component';
+import { QuickProfileDetailsComponent } from './quick-profile-details/quick-profile-details.component';
 
 const routes: Routes = [
   { path: 'anagrafica', component: AnagraficaDetailsComponent },
+  { path: 'quick-profile', component: QuickProfileDetailsComponent },
   { path: '**', component: HomeComponent }
 ];
 
