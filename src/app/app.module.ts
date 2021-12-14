@@ -9,6 +9,8 @@ import { AnagraficaComponent } from './anagrafica/anagrafica.component';
 import { AnagraficaDetailsComponent } from './anagrafica-details/anagrafica-details.component';
 import { QuickProfileComponent } from './quick-profile/quick-profile.component';
 import { QuickProfileDetailsComponent } from './quick-profile-details/quick-profile-details.component';
+import { AttivitaComponent } from './attivita/attivita.component';
+import { AttivitaDetailsComponent } from './attivita-details/attivita-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { QuickProfileDetailsComponent } from './quick-profile-details/quick-prof
     AnagraficaComponent,
     AnagraficaDetailsComponent,
     QuickProfileComponent,
-    QuickProfileDetailsComponent
+    QuickProfileDetailsComponent,
+    AttivitaComponent,
+    AttivitaDetailsComponent
   ],
   imports: [
     BrowserModule,
