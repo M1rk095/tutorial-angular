@@ -1,1 +1,13 @@
-<p>rss works!</p>
+<div class="container">
+    <div class="container-sport" *ngFor="let sport of sports">
+      <p> {{sport.title}} {{sport.text}}</p>
+    </div>
+</div>
+
+
+
+<!--
+<div *ngFor="let element of sports">
+  <p> {{element.title}}</p>
+</div>  
+-->

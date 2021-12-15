@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { RssService } from './rss.service';
+import { Sport } from '../sport';
 
 @Component({
   selector: 'app-rss',
@@ -8,10 +9,12 @@ import { RssService } from './rss.service';
 })
 export class RssComponent implements OnInit {
 
+  sports: Sport[] = [];
   constructor(private rssService: RssService) { }
-
+  
   ngOnInit(): void {
-    this.rssService.getData().subscribe((resp: any) => console.log(resp));
+    this.rssService.getData().subscribe((resp: any) => this.sports = resp.rss_list);
+    
   }
 
 }

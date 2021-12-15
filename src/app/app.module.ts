@@ -16,6 +16,7 @@ import { IndicatoriDetailsComponent } from './indicatori-details/indicatori-deta
 import { RssComponent } from './rss/rss.component';
 import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SportsComponent } from './sports/sports.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     IndicatoriComponent,
     IndicatoriDetailsComponent,
     RssComponent,
-    MenuComponent
+    MenuComponent,
+    SportsComponent,
   ],
   imports: [
     BrowserModule,
