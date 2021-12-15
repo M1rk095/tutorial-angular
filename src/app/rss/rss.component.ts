@@ -8,10 +8,24 @@ import { RssService } from './rss.service';
 })
 export class RssComponent implements OnInit {
 
+  sports: any;
+  inputValue = '';
+
   constructor(private rssService: RssService) { }
 
   ngOnInit(): void {
-    this.rssService.getData().subscribe((resp: any) => console.log(resp));
+    this.search();
+  }
+
+  search() {
+    const input = this.inputValue.trim().toLocaleUpperCase();
+    this.rssService.getData().subscribe(
+      (resp: any) => {
+        this.sports = resp.rss_list.filter(
+          (sport: any) => !input || sport.title.includes(input)
+        );
+      }
+    );
   }
 
 }

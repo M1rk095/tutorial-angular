@@ -1,1 +1,19 @@
-<p>rss works!</p>
+<div class="rss-container">
+    <div class="input-flex">
+        <div>
+            <div class="input-title">Scegli uno sport</div>
+            <input type="text" class="input" [(ngModel)]="inputValue"> <button class="cerca-btn" (click)="search()">Cerca</button>
+        </div>
+    </div>
+    <div class="result-container">
+        <ng-container *ngFor="let sport of sports; let i = index">
+            <div class="result-row" [ngClass]="{'last-result-row': i === sports.length-1}">
+                <img [src]="sport.base64_image">
+                <div>
+                    <h1>{{sport.title}}</h1>
+                    <p>{{sport.text}}</p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

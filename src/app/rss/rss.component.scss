@@ -1,0 +1,47 @@
+.rss-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.input-flex {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-title {
+    color: gray;
+    font-size: 12px;
+}
+
+.input {
+    font-size: 24px;
+    margin: 10px 20px 0 0;
+    border-radius: 5px;
+}
+
+.cerca-btn {
+    font-size: 16px;
+    background-color: rgb(60, 103, 223);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.result-row {
+    display: flex;
+    align-items: center;
+    margin: 0 400px;
+    border-bottom: 1px solid gray;
+
+    img {
+        height: 150px;
+        width: 150px;
+        margin: 10px 50px;
+    }
+}
+
+.last-result-row {
+    border: 0;
+}
