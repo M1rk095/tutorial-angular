@@ -1,0 +1,182 @@
+.p1 {
+    font-family: Verdana, sans-serif;
+    font-weight: 550;
+}
+
+.p2{
+    font-family: Verdana, sans-serif;
+    font-size: 70%;
+}
+
+.p3{
+    font-family: Verdana, sans-serif;
+    font-size: 70%;
+    opacity: 0.5;
+    margin-right: 5%;
+}
+
+.p4{
+    font-family: Verdana, sans-serif;
+    font-size: 70%;
+    opacity: 0.3;
+    margin-left: 10%;
+}
+
+.p5{
+    font-family: Verdana, sans-serif;
+    font-size: 70%;
+    opacity: 0.3;
+    margin-left: -80%;
+}
+
+.container-anagrafica-v2 {
+    
+    background-color: #e6ffff;
+    display: flex;
+    flex-direction: column;
+    border-width:4px;
+    border-radius: 20px;
+    height: 80%;
+    width: 80%;
+}
+
+.container-immagine{
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.circular-image{ 
+    border: 9px solid white;
+    width: 20%;
+    height: 90%;
+    border-radius: 100%;
+}
+ 
+.info-utente{
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.id-nsg{
+    display: flex;
+    flex-direction:row;
+    margin-top: -7%;
+    height: 10%;
+    width: 100%;
+}
+
+.id{
+    display: flex;
+    flex-direction:row;
+    margin-left: 10%;
+    width: 35%;  
+}
+.nsg{
+    display: flex;
+    flex-direction:row;
+    width: 50%;
+}
+
+.container-tipo-cliente{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed rgba(0, 0, 0, .2);
+    height: 15%;
+    width: 80%;
+}
+.tipo-cliente{
+    font-family: Verdana, sans-serif;
+    font-size: 75%;
+    margin-left: 5%;
+    
+}
+
+.anagrafica-details{
+    font-family: Verdana, sans-serif;
+    color: green;
+    margin-right: 5%;
+}
+
+.container-info-cliente{
+    height: 25%;
+    width: 80%;
+    border-top: 2px dashed rgba(0, 0, 0, .2);
+    border-bottom: 2px dashed rgba(0, 0, 0, .2);
+}
+
+.info-cliente{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 4%;
+    align-items: center;
+    background-color: white;
+    height: 80%;
+    border-radius: 20px;
+}
+
+.cointestazione{
+    border-right: 2px dashed rgba(0, 0, 0, .2);
+    width: 50%;
+}
+
+.container-filiale{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 80%;
+    height: 10%;
+    margin-top: 5%;
+    
+}
+
+.filiale{
+    font-family: Verdana, sans-serif;
+    font-size: 60%;
+    opacity: 0.5;
+    margin-left: 10%;
+}
+
+.container-gestore{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 80%;
+    height: 10%;
+    
+}
+
+.gestore{
+    font-family: Verdana, sans-serif;
+    font-size: 60%;
+    opacity: 0.5;
+    margin-left: 10%;
+}
+
+.container-note-cliente{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.note-cliente{
+    font-size: 70%;
+    font-family: Verdana, sans-serif;
+    color: green;
+    
+}
+
+.vista-cliente{
+    font-family: Verdana, sans-serif;
+    font-size: 80%;
+    margin-left: 15%;
+}
