@@ -13,6 +13,9 @@ import { AttivitaComponent } from './attivita/attivita.component';
 import { AttivitaDetailsComponent } from './attivita-details/attivita-details.component';
 import { IndicatoriComponent } from './indicatori/indicatori.component';
 import { IndicatoriDetailsComponent } from './indicatori-details/indicatori-details.component';
+import { RssComponent } from './rss/rss.component';
+import { MenuComponent } from './menu/menu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,14 @@ import { IndicatoriDetailsComponent } from './indicatori-details/indicatori-deta
     AttivitaComponent,
     AttivitaDetailsComponent,
     IndicatoriComponent,
-    IndicatoriDetailsComponent
+    IndicatoriDetailsComponent,
+    RssComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
