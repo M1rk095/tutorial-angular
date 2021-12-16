@@ -1,0 +1,38 @@
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>NOMINATIVO</th>
+                <th>NDG</th>
+                <th>BUSINESS UNIT</th>
+                <th>CTV AMMINISTRATO</th>
+                <th>CTV ASSICURATIVO</th>
+                <th>CTV DIRETTO</th>
+                <th>CTV GESTITO</th>
+                <th>CTV TOTALE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let elem of slicedDataSource">
+                <tr>
+                    <td>{{elem.nominativoCliente}}</td>
+                    <td>{{elem.ndgCliente}}</td>
+                    <td>{{elem.businessUnit}}</td>
+                    <td>{{elem.ctvAmministrato}}</td>
+                    <td>{{elem.ctvAssicurativo}}</td>
+                    <td>{{elem.ctvDiretto}}</td>
+                    <td>{{elem.ctvGestito}}</td>
+                    <td>{{elem.ctvTotale}}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    <div>
+        <app-paginazione
+            [elemPerPage]="elemPerPage"
+            [dataSourceLength]="dataSourceLength"
+            [currentPage]="currentPage"
+            (changePage)="search($event)">
+        </app-paginazione>
+    </div>
+</div>

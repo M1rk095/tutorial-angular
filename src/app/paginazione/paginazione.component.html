@@ -1,0 +1,7 @@
+<div class="paginazione-container" *ngIf="dataSourceLength > elemPerPage">
+    <span class="clickable bold" (click)="emitChangePage(currentPage - 1)">&lt;</span>
+    <ng-container *ngFor="let page of pages">
+        <span class="clickable" [ngClass]="{'bold': page === currentPage}" (click)="emitChangePage(page)">{{page}}</span> 
+    </ng-container> 
+    <span class="clickable bold" (click)="emitChangePage(currentPage + 1)">&gt;</span>  
+</div>

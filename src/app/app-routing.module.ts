@@ -7,6 +7,7 @@ import { IndicatoriDetailsComponent } from './indicatori-details/indicatori-deta
 import { MenuComponent } from './menu/menu.component';
 import { QuickProfileDetailsComponent } from './quick-profile-details/quick-profile-details.component';
 import { RssComponent } from './rss/rss.component';
+import { TabellaComponent } from './tabella/tabella.component';
 
 const routes: Routes = [
   { path: 'home-widgets', component: HomeComponent },
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'indicatori', component: IndicatoriDetailsComponent },
 
   { path: 'rss', component: RssComponent },
+
+  { path: 'tabella', component: TabellaComponent },
 
   { path: '**', component: MenuComponent }
 ];
