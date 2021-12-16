@@ -5,11 +5,11 @@
           <div class="description">Scegli uno sport</div>
         </div>
         <div class="search">
-          <input type="text" id="search-bar" [(ngModel)]="title" (input)="cerca()"> 
+          <input type="text" id="search-bar" [(ngModel)]="title" (input)="clear()"> 
         </div>
       </div>
       <div class="container-search-half-right">
-        <button class="cerca">Cerca</button>
+        <button class="cerca" (click)="cerca()">Cerca</button>
       </div>
     </div>
     <div class="container-sport" *ngFor="let sport of sports">

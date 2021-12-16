@@ -8,6 +8,7 @@ import { Sport } from '../sport';
   styleUrls: ['./rss.component.scss']
 })
 export class RssComponent implements OnInit {
+  
 
   sports: Sport[] = [];
   title: string = "";
@@ -17,6 +18,13 @@ export class RssComponent implements OnInit {
   
   ngOnInit(): void {
     this.rssService.getData().subscribe((resp: any) => this.sports = resp.rss_list); 
+  }
+
+  clear(){
+    if(this.title == ""){ 
+      this.ngOnInit();
+    } 
+    
   }
 
   cerca(){
