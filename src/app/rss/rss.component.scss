@@ -1,14 +1,57 @@
 .container{
     display: flex;
     flex-direction: column;
-    margin-top: 15%;
     height: 100vh;
     width: 100vw;  
 }
 
-.container-sport{
+.container-search{
     display: flex;
-    margin-left: 20%;
+    margin-top: 5%;
+    height: 10%;
+}   
+
+
+
+.container-search-half-left{
+    flex-direction: column;
+    width: 50%;
+}
+
+.search{
+    height: 50%;
+}
+
+.description-search{
+    height: 30%;
+}
+
+.description{
+    margin-left: 74%;
+    font-size: 70%;
+}
+
+#search-bar{
+    float: right;
+}
+.container-search-half-right{
+    width: 50%;
+}
+
+.cerca{
+    margin-top: 3.2%;
+    margin-left: 2%;
+    width: 7%;
+    background-color: blue;
+    color: white;
+    font-size: 70%;
+    border-radius: 7px;
+}
+
+.container-sport{
+    margin-top: 5%;
+    display: flex;
+    margin-left: 22%;
     width: 70%;
     height: 15%;
 }

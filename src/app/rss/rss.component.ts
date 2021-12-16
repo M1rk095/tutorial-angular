@@ -10,6 +10,7 @@ import { Sport } from '../sport';
 export class RssComponent implements OnInit {
 
   sports: Sport[] = [];
+  sport_searched: Sport[] = [];
   constructor(private rssService: RssService) { }
   
   ngOnInit(): void {
