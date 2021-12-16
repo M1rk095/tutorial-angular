@@ -12,12 +12,18 @@ export class RssComponent implements OnInit {
 
   sports: Sport[] = [];
   title: string = "";
+  numberElements: number = 3;
+  flagDivisor: boolean = false;
+
   constructor(private rssService: RssService) {
    
    }
   
   ngOnInit(): void {
     this.rssService.getData().subscribe((resp: any) => this.sports = resp.rss_list); 
+    this.numberElements = 0;
+    this.flagDivisor = true;
+    
   }
 
   clear(){

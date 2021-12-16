@@ -11,23 +11,47 @@
       <div class="container-search-half-right">
         <button class="cerca" (click)="cerca()">Cerca</button>
       </div>
-    </div>
-    <div class="container-sport" *ngFor="let sport of sports">
-      <div class="container-image">
-        <div><img class="image" src={{sport.base64_image}}></div>
-      </div>
-      <div class="container-description">
-        <div class="container-title">
-          <div class="title"><b>{{sport.title}}</b></div>
+    </div> 
+    <div class="container-sport">
+      <div class="sport" *ngFor="let sport of sports">
+        <div class="image-sport">
+          <img class="image" src={{sport.base64_image}}>
         </div>
-        <div class="container-text">
-          <div class="text">{{sport.text}}</div>
+        <div class="description-sport">
+          <div class="title-sport">
+            <b>{{sport.title}}</b>
+          </div>
+          <div class="text-sport">
+            {{sport.text}}
+          </div>
+          
         </div>
       </div>
     </div>
+
 </div>
 
 
+
+<!--<div *ngIf="flagDivisor">
+  <div class="container-sport" *ngFor="let sport of sports">
+    <div class="container-image">
+      <div><img class="image" src={{sport.base64_image}}></div>
+    </div>
+    <div class="container-description">
+      <div class="container-title">
+        <div class="title"><b>{{sport.title}}</b></div>
+      </div>
+      <div class="container-text">
+        <div class="text">{{sport.text}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<!--<div *ngIf="condition; else elseBlock">Content to render when condition is true.</div>
+<ng-template #elseBlock>Content to render when condition is false.</ng-template> -->
 
 <!--
 <div *ngFor="let element of sports">
