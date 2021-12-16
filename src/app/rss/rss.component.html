@@ -5,7 +5,7 @@
           <div class="description">Scegli uno sport</div>
         </div>
         <div class="search">
-          <input id="search-bar">
+          <input type="text" id="search-bar" [(ngModel)]="title" (input)="cerca()"> 
         </div>
       </div>
       <div class="container-search-half-right">

@@ -10,11 +10,22 @@ import { Sport } from '../sport';
 export class RssComponent implements OnInit {
 
   sports: Sport[] = [];
-  sport_searched: Sport[] = [];
-  constructor(private rssService: RssService) { }
+  title: string = "";
+  constructor(private rssService: RssService) {
+   
+   }
   
   ngOnInit(): void {
-    this.rssService.getData().subscribe((resp: any) => this.sports = resp.rss_list);
+    this.rssService.getData().subscribe((resp: any) => this.sports = resp.rss_list); 
+  }
+
+  cerca(){
+    if(this.title != ""){
+      this.sports = this.sports.filter(res =>
+        { return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase())});
+    }else if(this.title == ""){ 
+      this.ngOnInit();
+    } 
     
   }
 
