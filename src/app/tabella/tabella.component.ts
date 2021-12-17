@@ -33,6 +33,26 @@ export class TabellaComponent implements OnInit {
     this.changePage.emit(this.selectedCurrentPage);
   }
  
+  goBack(){
+    if(this.currentPage === 1){
+      ;
+    }else{
+      this.currentPage -= 1;
+      this.changePage.emit(this.currentPage);
+      console.log(this.currentPage);
+    }
+  }
+
+  goForward(){
+    if(this.currentPage === this.menu.length - 1){
+      console.log(this.menu.length);
+      ;
+    }else{
+      this.currentPage += 1;
+      this.changePage.emit(this.currentPage);
+      console.log(this.currentPage);
+    }
+  }
 
 }
 

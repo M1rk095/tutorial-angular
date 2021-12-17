@@ -15,12 +15,12 @@
     
     <div class="container-menu" >
       <ng-container >
-        <
+        <div class="arrow" (click)="goBack()"><</div>
         <div *ngFor = "let m of menu; let i = index" 
           [ngClass]="{'currentPage': i === currentPage}" (click)="onSelect(m)">
             &nbsp;&nbsp; {{m}} &nbsp;&nbsp; 
         </div>
-        >
+        <div class="arrow" (click)="goForward()">></div>
       </ng-container>
     </div>
 

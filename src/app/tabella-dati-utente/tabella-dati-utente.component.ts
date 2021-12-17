@@ -17,24 +17,32 @@ export class TabellaDatiUtenteComponent implements OnInit {
   menu: any = [];
   dataSourceLength: any;
   currentPage: any;
+  lengthMenu: any;
+  arrayTemp: any;
 
   constructor(private tabellaService:TabellaService) { }
 
   ngOnInit(): void {
     this.getData();
-    this.currentPage = 1;
-    this.elemPerPage = 10;
-    for (let i = 1; i <= this.elemPerPage; i++) {
-      this.menu[i] = i;
-    }
-    
+
   }
 
   getData(){
     this.tabellaService.getData().subscribe(
       (resp: any) => {
-        this.rows = resp;
+        this.arrayTemp = resp;
         this.dataSourceLength = resp.length;
+        this.currentPage = 1;
+        this.elemPerPage = 10;
+        this.rows = this.arrayTemp.slice(this.currentPage-1,this.elemPerPage);
+        
+        
+        
+        this.lengthMenu = Math.ceil(this.dataSourceLength/this.elemPerPage);
+        for (let i = 1; i <= this.lengthMenu; i++) {
+          this.menu[i] = i;
+        }
+        
       });
   }
 
