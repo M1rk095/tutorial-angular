@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { QuickProfileDetailsComponent } from './quick-profile-details/quick-profile-details.component';
 import { RssComponent } from './rss/rss.component';
 import { TabellaComponent } from './tabella/tabella.component';
+import { TabellaDatiUtenteComponent } from './tabella-dati-utente/tabella-dati-utente.component';
 
 const routes: Routes = [
   { path: 'home-widgets', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
 
   { path: 'rss', component: RssComponent },
   { path: 'tabella', component: TabellaComponent },
+  { path: 'tabella-dati-utente', component: TabellaDatiUtenteComponent },
   { path: '**', component: MenuComponent }
 ];
 

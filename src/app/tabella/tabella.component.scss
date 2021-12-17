@@ -18,17 +18,15 @@ table, th , td {
   
 
 
-.menu{
+.container-menu{
     display: flex;
+    
+    justify-content: center;
     margin-top: 30px;
     height: 10%;
-    width: 30%;
-    border: 2px solid black;
+    width: 100%;
 }
 
-.titolo-cella{
-    display: flex;
-    height: 10%;
-    width: 12.5%;
-    border: 2px solid black;
+.currentPage{
+    font-weight: 900;
 }

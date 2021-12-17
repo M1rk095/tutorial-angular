@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TabellaService } from './tabella.service';
+import { Component, Input, Output, OnInit } from '@angular/core';
+import { TabellaService } from '../tabella.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tabella',
@@ -8,27 +9,30 @@ import { TabellaService } from './tabella.service';
 })
 export class TabellaComponent implements OnInit {
 
-  rows: any;
-  headers = ["NOMINATIVO", "NDG", "BUSINESS UNIT", "CTV AMMINISTRATO", 
-    "CTV ASSICURATO", "CTV DIRETTO", "CTV GESTITO", "CTV TOTALE"];
-  index = ["nominativoCliente", "ndgCliente", "businessUnit", "ctvAmministrato", 
-      "ctvAssicurativo", "ctvDiretto", "ctvGestito", "ctvTotale"];
+  @Input() rows: any;
+  @Input() headers: any;
+  @Input() indexHeaders: any;
+  @Input() menu: any;
+  @Input() dataSourceLength: any;
+  @Input() currentPage: any;
+
+  @Output() changePage = new EventEmitter();
 
   constructor(private tabellaService:TabellaService) { }
 
-  @Input() elemPerPage: any; 
-
   ngOnInit(): void {
-    this.getData();
+    
   }
 
-  getData(){
-    this.tabellaService.getData().subscribe(
-      (resp: any) => {this.rows = resp
-        
-      });
-      console.log(this.rows);
+
+
+  selectedCurrentPage?: any;
+  onSelect(newCurrentPage: any): void {
+    this.selectedCurrentPage = newCurrentPage;
+    console.log(this.selectedCurrentPage);
+    this.changePage.emit(this.selectedCurrentPage);
   }
+ 
 
 }
 

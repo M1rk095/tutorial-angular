@@ -1,5 +1,4 @@
 <div class="container-tabella">
-  
     <table>
       <tr>
         <th *ngFor = "let column of headers">
@@ -7,15 +6,22 @@
         </th>
       </tr>
       <tr *ngFor = "let row of rows">
-        <td *ngFor = "let column of index">
+        <td *ngFor = "let column of indexHeaders">
           {{row[column]}}
         </td>
       </tr>
     </table>
 
     
-    <div class="menu">
-        
+    <div class="container-menu" >
+      <ng-container >
+        <
+        <div *ngFor = "let m of menu; let i = index" 
+          [ngClass]="{'currentPage': i === currentPage}" (click)="onSelect(m)">
+            &nbsp;&nbsp; {{m}} &nbsp;&nbsp; 
+        </div>
+        >
+      </ng-container>
     </div>
 
 </div>

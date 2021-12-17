@@ -18,6 +18,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TabellaComponent } from './tabella/tabella.component';
+import { TabellaDatiUtenteComponent } from './tabella-dati-utente/tabella-dati-utente.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TabellaComponent } from './tabella/tabella.component';
     IndicatoriDetailsComponent,
     RssComponent,
     MenuComponent,
-    TabellaComponent
+    TabellaComponent,
+    TabellaDatiUtenteComponent
   ],
   imports: [
     BrowserModule,
