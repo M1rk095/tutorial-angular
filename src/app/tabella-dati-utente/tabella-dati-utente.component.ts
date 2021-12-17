@@ -13,12 +13,14 @@ export class TabellaDatiUtenteComponent implements OnInit {
     "CTV ASSICURATO", "CTV DIRETTO", "CTV GESTITO", "CTV TOTALE"];
   indexHeaders = ["nominativoCliente", "ndgCliente", "businessUnit", "ctvAmministrato", 
       "ctvAssicurativo", "ctvDiretto", "ctvGestito", "ctvTotale"];
-  elemPerPage: any;
+  elemPerPage: any = 10;
   menu: any = [];
   dataSourceLength: any;
-  currentPage: any;
+  currentPage: any = 1;
   lengthMenu: any;
   arrayTemp: any;
+  tempStart: any = 0;
+  tempEnd: any = 10;
 
   constructor(private tabellaService:TabellaService) { }
 
@@ -30,23 +32,22 @@ export class TabellaDatiUtenteComponent implements OnInit {
   getData(){
     this.tabellaService.getData().subscribe(
       (resp: any) => {
-        this.arrayTemp = resp;
+        
+        this.arrayTemp = resp.slice(this.tempStart, this.tempEnd);
+        
+        this.rows = this.arrayTemp;
         this.dataSourceLength = resp.length;
-        this.currentPage = 1;
-        this.elemPerPage = 10;
-        this.rows = this.arrayTemp.slice(this.currentPage-1,this.elemPerPage);
-        
-        
-        
         this.lengthMenu = Math.ceil(this.dataSourceLength/this.elemPerPage);
         for (let i = 1; i <= this.lengthMenu; i++) {
           this.menu[i] = i;
         }
-        
       });
   }
 
   changeCurrentPage(newCurrentPage: any) {
     this.currentPage = newCurrentPage;
+    this.tempStart = (newCurrentPage * this.elemPerPage) - 10;
+    this.tempEnd = (newCurrentPage * this.elemPerPage);
+    this.ngOnInit();
   }
 }
