@@ -9,6 +9,9 @@ import { EventEmitter } from '@angular/core';
 })
 export class TabellaComponent implements OnInit {
 
+  flag: any = "normale";
+  selectedColumn: any = "";
+
   @Input() rows: any;
   @Input() headers: any;
   @Input() indexHeaders: any;
@@ -17,14 +20,13 @@ export class TabellaComponent implements OnInit {
   @Input() currentPage: any;
 
   @Output() changePage = new EventEmitter();
+  @Output() newOrdinaColonna= new EventEmitter();
 
   constructor(private tabellaService:TabellaService) { }
 
   ngOnInit(): void {
     
   }
-
-
 
   selectedCurrentPage?: any;
   onSelect(newCurrentPage: any): void {
@@ -54,12 +56,18 @@ export class TabellaComponent implements OnInit {
     }
   }
 
+  ordina(titolo: any){
+    this.selectedColumn = titolo;
+    if(this.flag == "normale"){
+      this.flag = "crescente";
+    }else if(this.flag == "crescente"){
+      this.flag = "decrescente";
+    }else if(this.flag == "decrescente"){
+      this.flag = "normale";
+    }
+    this.newOrdinaColonna.emit([this.selectedColumn, this.flag]);
+  }
+
+
 }
 
- /* @Input() elemPerPage. (numero di elementi per pagina da mostrare)
-
-@Input() dataSourceLength (numero totale di elementi)
-
-@Input() currentPage (pagina corrente)
-
-@Output() changePage = new EventEmitter(); (evento che emette il cambiamento di pagina)*/

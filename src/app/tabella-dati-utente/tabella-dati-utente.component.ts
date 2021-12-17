@@ -13,6 +13,13 @@ export class TabellaDatiUtenteComponent implements OnInit {
     "CTV ASSICURATO", "CTV DIRETTO", "CTV GESTITO", "CTV TOTALE"];
   indexHeaders = ["nominativoCliente", "ndgCliente", "businessUnit", "ctvAmministrato", 
       "ctvAssicurativo", "ctvDiretto", "ctvGestito", "ctvTotale"];
+  mapHeaders : any = {
+    "Nominativo" : "nominativoCliente",
+    "NDG" : "ndgCliente",
+  };
+  
+
+  
   elemPerPage: any = 10;
   menu: any = [];
   dataSourceLength: any;
@@ -21,6 +28,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
   arrayTemp: any;
   tempStart: any = 0;
   tempEnd: any = 10;
+
 
   constructor(private tabellaService:TabellaService) { }
 
@@ -31,10 +39,13 @@ export class TabellaDatiUtenteComponent implements OnInit {
 
   getData(){
     this.tabellaService.getData().subscribe(
-      (resp: any) => {
-        
+      (resp: any) => {   
+        resp.sort(function(a:any, b:any){
+          if(a.nominativoCliente < b.nominativoCliente) { return -1; }
+          if(a.nominativoCliente > b.nominativoCliente) { return 1; }
+          return 0;
+        })
         this.arrayTemp = resp.slice(this.tempStart, this.tempEnd);
-        
         this.rows = this.arrayTemp;
         this.dataSourceLength = resp.length;
         this.lengthMenu = Math.ceil(this.dataSourceLength/this.elemPerPage);
@@ -49,5 +60,15 @@ export class TabellaDatiUtenteComponent implements OnInit {
     this.tempStart = (newCurrentPage * this.elemPerPage) - 10;
     this.tempEnd = (newCurrentPage * this.elemPerPage);
     this.ngOnInit();
+    console.log("currentPage");
   }
+
+  ordinaColonna(colonnaInfo: any){
+    
+     
+
+    this.ngOnInit();
+    console.log(colonnaInfo);
+  }
+
 }

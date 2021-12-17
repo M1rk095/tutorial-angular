@@ -1,7 +1,7 @@
 <div class="container-tabella">
     <table>
       <tr>
-        <th *ngFor = "let column of headers">
+        <th *ngFor = "let column of headers" (click)="ordina(column)">
           {{column}}
         </th>
       </tr>
