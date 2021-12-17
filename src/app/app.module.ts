@@ -17,6 +17,7 @@ import { RssComponent } from './rss/rss.component';
 import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { TabellaComponent } from './tabella/tabella.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     IndicatoriComponent,
     IndicatoriDetailsComponent,
     RssComponent,
-    MenuComponent
+    MenuComponent,
+    TabellaComponent
   ],
   imports: [
     BrowserModule,
