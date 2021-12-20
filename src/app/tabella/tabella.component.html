@@ -1,15 +1,18 @@
 <div class="container-tabella">
     <table>
-      <tr>
-        <th *ngFor = "let column of headers" (click)="ordina(column)">
-          {{column}}
-        </th>
-      </tr>
-      <tr *ngFor = "let row of rows">
-        <td *ngFor = "let column of indexHeaders">
-          {{row[column]}}
-        </td>
-      </tr>
+      <ng-container>
+        <tr>
+          <th *ngFor = "let column of headers; let i = index"
+             (click)="ordina(column)">
+            {{column}}
+          </th>
+        </tr>
+        <tr *ngFor = "let row of rows">
+          <td *ngFor = "let column of indexHeaders">
+            {{row[column]}}
+          </td>
+        </tr>
+      </ng-container>
     </table>
 
     
@@ -26,4 +29,3 @@
 
 </div>
 
-<!--{{data[0].nominativoCliente}}-->

@@ -22,6 +22,8 @@ export class TabellaComponent implements OnInit {
   @Output() changePage = new EventEmitter();
   @Output() newOrdinaColonna= new EventEmitter();
 
+  
+
   constructor(private tabellaService:TabellaService) { }
 
   ngOnInit(): void {
