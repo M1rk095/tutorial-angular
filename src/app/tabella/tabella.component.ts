@@ -18,6 +18,7 @@ export class TabellaComponent implements OnInit {
   @Input() menu: any;
   @Input() dataSourceLength: any;
   @Input() currentPage: any;
+  @Input() orderColumnFlag: any;
 
   @Output() changePage = new EventEmitter();
   @Output() newOrdinaColonna= new EventEmitter();

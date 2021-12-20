@@ -2,9 +2,13 @@
     <table>
       <ng-container>
         <tr>
-          <th *ngFor = "let column of headers; let i = index"
-             (click)="ordina(column)">
+          <th *ngFor = "let column of headers"
+           [ngClass]="{'orderColumnCrescente': 1 === orderColumnFlag}" 
+           [ngClass]="{'orderColumnDecrescente': 2 === orderColumnFlag}" 
+           (click)="ordina(column)">
             {{column}}
+            <img class="imageUp" src="..\assets\up.jpg">
+            <img class="imageDown" src="..\assets\down.png">
           </th>
         </tr>
         <tr *ngFor = "let row of rows">

@@ -1,4 +1,5 @@
 <app-tabella [rows]="rows" [headers]="headers" [indexHeaders]="indexHeaders"
     [menu]="menu" [dataSourceLength]="dataSourceLength" [currentPage]="currentPage" 
+    [orderColumnFlag] = "orderColumnFlag"
     (changePage)="changeCurrentPage($event)" (newOrdinaColonna)="ordinaColonna($event)">
 </app-tabella>

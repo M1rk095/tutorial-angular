@@ -56,8 +56,9 @@ export class TabellaDatiUtenteComponent implements OnInit {
           return 0;
         })
         if(this.orderColumn == "normale"){
-          ;
+          this.orderColumnFlag = 0;
         }else if (this.orderColumn == "crescente"){
+          this.orderColumnFlag = 1;
           console.log(this.columnToOrder);
           switch (this.columnToOrder) {     
               case "ndgCliente":
@@ -114,6 +115,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
                   break;
           }
         }else if (this.orderColumn == "decrescente"){
+          this.orderColumnFlag = 2;
           console.log(this.columnToOrder);
           switch (this.columnToOrder) {     
               case "ndgCliente":

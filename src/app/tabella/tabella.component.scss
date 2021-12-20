@@ -9,13 +9,36 @@
 
 
 table, th , td {
-    
     text-align: center;
     border: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
   }
   
+.imageUp{
+    display: none;
+}
+
+.imageDown{
+    display: none;
+}
+
+.orderColumnCrescente{
+
+    .imageUp{
+        display: inline;
+        width: 10%;
+    }
+    
+}
+
+.orderColumnDecrescente{
+
+    .imageDown{
+        display: inline;
+        width: 10%;
+    }
+}
 
 .container-menu{
     display: flex;
