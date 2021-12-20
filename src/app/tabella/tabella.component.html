@@ -2,36 +2,64 @@
   <div class="container-form">
     <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
       <div class="filter">
-        <label for="nominativo">Nominativo:</label>
+        <label for="nominativo">Nominativo: </label>
         <input id="nominativo" type="text" formControlName="nominativo">
       </div>  
       <div class="filter">
-        <label for="ndg">NDG: </label>
-        <input id="ndg" type="number" formControlName="ndg">
+        <label for="ndgMin">NDG Min: </label>
+        <input id="ndgMin" type="number" formControlName="ndgMin">
       </div>
       <div class="filter">
-        <label for="businessUnit">Business Unit: </label>
-        <input id="businessUnit" type="number" formControlName="businessUnit">
+        <label for="ndgMax">NDG Max: </label>
+        <input id="ndgMax" type="number" formControlName="ndgMax">
       </div>
       <div class="filter">
-        <label for="ctvAmministrativo">CTV Amministrativo: </label>
-        <input id="ctvAmministrativo" type="number" formControlName="ctvAmministrativo">
+        <label for="businessUnitMin">Business Unit Min: </label>
+        <input id="businessUnitMin" type="number" formControlName="businessUnitMin">
       </div>
       <div class="filter">
-        <label for="ctvAssicurato">CTV Assicurato: </label>
-        <input id="ctvAssicurato" type="number" formControlName="ctvAssicurato">
+        <label for="businessUnitMax">Business Unit Max: </label>
+        <input id="businessUnitMax" type="number" formControlName="businessUnitMax">
       </div>
       <div class="filter">
-        <label for="ctvDiretto">CTV Diretto: </label>
-        <input id="ctvDiretto" type="number" formControlName="ctvDiretto">
+        <label for="ctvAmministrativoMin">CTV Amministrativo Min: </label>
+        <input id="ctvAmministrativoMin" type="number" formControlName="ctvAmministrativoMin">
       </div>
       <div class="filter">
-        <label for="ctvGestito">CTV Gestito: </label>
-        <input id="ctvGestito" type="number" formControlName="ctvGestito">
+        <label for="ctvAmministrativoMax">CTV Amministrativo Max: </label>
+        <input id="ctvAmministrativoMax" type="number" formControlName="ctvAmministrativoMax">
       </div>
       <div class="filter">
-        <label for="ctvTotale">CTV Totale: </label>
-        <input id="ctvTotale" type="number" formControlName="ctvTotale">
+        <label for="ctvAssicuratoMin">CTV Assicurato Min:</label>
+        <input id="ctvAssicuratoMin" type="number" formControlName="ctvAssicuratoMin">
+      </div>
+      <div class="filter">
+        <label for="ctvAssicuratMax">CTV Assicurato Max: </label>
+        <input id="ctvAssicuratoMax" type="number" formControlName="ctvAssicuratoMax">
+      </div>
+      <div class="filter">
+        <label for="ctvDirettoMin">CTV Diretto Min:</label>
+        <input id="ctvDirettoMin" type="number" formControlName="ctvDirettoMin">
+      </div>
+      <div class="filter"> 
+        <label for="ctvDirettoMax">CTV Diretto Max: </label>
+        <input id="ctvDirettoMax" type="number" formControlName="ctvDirettoMax">
+      </div>
+      <div class="filter">
+        <label for="ctvGestitoMin">CTV Gestito Min:</label>
+        <input id="ctvGestitoMin" type="number" formControlName="ctvGestitoMin">
+      </div>
+      <div class="filter">
+        <label for="ctvGestitoMax">CTV Gestito Max: </label>
+        <input id="ctvGestitoMax" type="number" formControlName="ctvGestitoMax">
+      </div>
+      <div class="filter">
+        <label for="ctvTotaleMin">CTV Totale Min:</label>
+        <input id="ctvTotaleMin" type="number" formControlName="ctvTotaleMin">
+      </div> 
+      <div class="filter"> 
+        <label for="ctvTotaleMax">CTV Totale Max: </label>
+        <input id="ctvTotaleMax" type="number" formControlName="ctvTotaleMax">
       </div>
       <button>Filtra</button>
     </form>
