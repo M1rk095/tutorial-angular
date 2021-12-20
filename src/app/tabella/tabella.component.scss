@@ -1,4 +1,4 @@
-.container-tabella{
+.container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,7 +6,27 @@
     width: 99vw;
 }
 
+.container-filter{
+    width: 80%;
+    height: 80%;
+    border: 2px solid green;
+}
 
+
+.container-tabella{
+    border: 2px solid red;
+}
+
+.container-form{
+    
+    border: 1px solid black;
+}
+
+.filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 table, th , td {
     text-align: center;

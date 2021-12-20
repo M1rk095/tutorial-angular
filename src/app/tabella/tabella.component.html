@@ -1,4 +1,56 @@
-<div class="container-tabella">
+<div class="container">
+  <div class="container-form">
+    <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+      <div class="filter">
+        <label for="nominativo">Nominativo:</label>
+        <input id="nominativo" type="text" formControlName="nominativo">
+      </div>  
+      <div class="filter">
+        <label for="ndg">NDG: </label>
+        <input id="ndg" type="number" formControlName="ndg">
+      </div>
+      <div class="filter">
+        <label for="businessUnit">Business Unit: </label>
+        <input id="businessUnit" type="number" formControlName="businessUnit">
+      </div>
+      <div class="filter">
+        <label for="ctvAmministrativo">CTV Amministrativo: </label>
+        <input id="ctvAmministrativo" type="number" formControlName="ctvAmministrativo">
+      </div>
+      <div class="filter">
+        <label for="ctvAssicurato">CTV Assicurato: </label>
+        <input id="ctvAssicurato" type="number" formControlName="ctvAssicurato">
+      </div>
+      <div class="filter">
+        <label for="ctvDiretto">CTV Diretto: </label>
+        <input id="ctvDiretto" type="number" formControlName="ctvDiretto">
+      </div>
+      <div class="filter">
+        <label for="ctvGestito">CTV Gestito: </label>
+        <input id="ctvGestito" type="number" formControlName="ctvGestito">
+      </div>
+      <div class="filter">
+        <label for="ctvTotale">CTV Totale: </label>
+        <input id="ctvTotale" type="number" formControlName="ctvTotale">
+      </div>
+      <button>Filtra</button>
+    </form>
+  </div>
+
+<!--
+   filterForm = new FormGroup({
+      nominativo: new FormControl(''),
+      ndg: new FormControl(0),
+      businessUnit: new FormControl(0),
+      ctvAmministrativo: new FormControl(0),
+      ctvAssicurato: new FormControl(0),
+      ctvDiretto: new FormControl(0),
+      ctvGestito: new FormControl(0),
+      ctvTotale: new FormControl(0),
+  });
+    
+-->
+  <div class="container-tabella">
     <table>
       <ng-container>
         <tr>
@@ -30,6 +82,6 @@
         <div class="arrow" (click)="goForward()">></div>
       </ng-container>
     </div>
-
+  </div>
 </div>
 

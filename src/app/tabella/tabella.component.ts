@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit } from '@angular/core';
 import { TabellaService } from '../tabella.service';
 import { EventEmitter } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-tabella',
@@ -19,10 +20,13 @@ export class TabellaComponent implements OnInit {
   @Input() dataSourceLength: any;
   @Input() currentPage: any;
   @Input() orderColumnFlag: any;
+  @Input() filterForm: any;
 
   @Output() changePage = new EventEmitter();
   @Output() newOrdinaColonna= new EventEmitter();
-
+  @Output() newFilter = new EventEmitter();
+  
+ 
   
 
   constructor(private tabellaService:TabellaService) { }
@@ -71,6 +75,9 @@ export class TabellaComponent implements OnInit {
     this.newOrdinaColonna.emit([this.selectedColumn, this.flag]);
   }
 
+  onSubmit() {
+    this.newFilter.emit(this.filterForm.value);
+  }
 
 }
 

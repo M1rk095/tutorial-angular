@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TabellaService } from '../tabella.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-tabella-dati-utente',
@@ -24,6 +25,17 @@ export class TabellaDatiUtenteComponent implements OnInit {
         ["CTV GESTITO", "ctvGestito"],
         ["CTV TOTALE", "ctvTotale"]
     ]);
+
+  filterForm = new FormGroup({
+      nominativo: new FormControl(''),
+      ndg: new FormControl(0),
+      businessUnit: new FormControl(0),
+      ctvAmministrativo: new FormControl(0),
+      ctvAssicurato: new FormControl(0),
+      ctvDiretto: new FormControl(0),
+      ctvGestito: new FormControl(0),
+      ctvTotale: new FormControl(0),
+  });
     
   orderColumn: any = "normale";
   orderColumnFlag: any = 0;
@@ -197,7 +209,11 @@ export class TabellaDatiUtenteComponent implements OnInit {
     this.columnToOrder = this.mapHeaders.get(colonnaInfo[0]);
     this.orderColumn = colonnaInfo[1];
     this.ngOnInit();
-    
+  }
+
+  filter(newFilter: any) {
+    console.log("ciao");
+    console.log(newFilter);
   }
 
 }
