@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TabellaService } from '../tabella.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-tabella-dati-utente',
@@ -26,6 +27,25 @@ export class TabellaDatiUtenteComponent implements OnInit {
         ["CTV TOTALE", "ctvTotale"]
     ]);
 
+  filterForm = new FormGroup({
+      nominativo: new FormControl(),
+      ndgMin: new FormControl(),
+      ndgMax: new FormControl(),
+      businessUnitMin: new FormControl(),
+      businessUnitMax: new FormControl(),
+      ctvAmministrativoMin: new FormControl(),
+      ctvAmministrativoMax: new FormControl(),
+      ctvAssicuratoMin: new FormControl(),
+      ctvAssicuratoMax: new FormControl(),
+      ctvDirettoMin: new FormControl(),
+      ctvDirettoMax: new FormControl(),
+      ctvGestitoMin: new FormControl(),
+      ctvGestitoMax: new FormControl(),
+      ctvTotaleMin: new FormControl(),
+      ctvTotaleMax: new FormControl(),
+      numElem: new FormControl(10)
+  });
+
     nominativo: any;
     ndgMin: any;
     ndgMax: any;
@@ -41,7 +61,8 @@ export class TabellaDatiUtenteComponent implements OnInit {
     ctvGestitoMax: any;
     ctvTotaleMin: any;
     ctvTotaleMax: any;
-    numElem: any;
+    filterFormTemp: any = this.filterForm;
+    numElem: any = 5;
 
 
     
@@ -58,26 +79,9 @@ export class TabellaDatiUtenteComponent implements OnInit {
   arrayTemp: any = [];
   arrayTemp2: any = [];
   tempStart: any = 0;
-  tempEnd: any = this.elemPerPage;
+  tempEnd: any;
 
-  filterForm = new FormGroup({
-    nominativo: new FormControl(),
-    ndgMin: new FormControl(),
-    ndgMax: new FormControl(),
-    businessUnitMin: new FormControl(),
-    businessUnitMax: new FormControl(),
-    ctvAmministrativoMin: new FormControl(),
-    ctvAmministrativoMax: new FormControl(),
-    ctvAssicuratoMin: new FormControl(),
-    ctvAssicuratoMax: new FormControl(),
-    ctvDirettoMin: new FormControl(),
-    ctvDirettoMax: new FormControl(),
-    ctvGestitoMin: new FormControl(),
-    ctvGestitoMax: new FormControl(),
-    ctvTotaleMin: new FormControl(),
-    ctvTotaleMax: new FormControl(),
-    numElem: new FormControl()
-});
+
 
   constructor(private tabellaService:TabellaService) { }
 
@@ -294,6 +298,10 @@ export class TabellaDatiUtenteComponent implements OnInit {
           );
         }
 
+        this.elemPerPage;
+
+        this.tempStart = (this.currentPage * this.elemPerPage) - this.elemPerPage;
+        this.tempEnd = (this.currentPage * this.elemPerPage);
 
         this.rows = this.arrayTemp.slice(this.tempStart, this.tempEnd);
         this.dataSourceLength = resp.length;
@@ -307,10 +315,8 @@ export class TabellaDatiUtenteComponent implements OnInit {
 
   changeCurrentPage(newCurrentPage: any) {
     this.currentPage = newCurrentPage;
-    this.tempStart = (newCurrentPage * this.elemPerPage) - 10;
-    this.tempEnd = (newCurrentPage * this.elemPerPage);
+
     this.ngOnInit();
-    console.log("currentPage");
   }
 
   ordinaColonna(colonnaInfo: any){
@@ -337,7 +343,8 @@ export class TabellaDatiUtenteComponent implements OnInit {
     this.ctvGestitoMax = newFilter.ctvGestitoMax;
     this.ctvTotaleMin = newFilter.ctvTotaleMin;
     this.ctvTotaleMax = newFilter.ctvTotaleMax;
-    this.numElem = newFilter.numElem;
+    this.elemPerPage = newFilter.numElem;
+
     this.ngOnInit();
     
   }
