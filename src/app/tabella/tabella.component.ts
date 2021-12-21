@@ -80,6 +80,7 @@ export class TabellaComponent implements OnInit {
     if(this.flagClear =="clear"){
       this.flagClear = "";
       this.filterForm.reset();
+      this.newFilter.emit(this.filterForm.value);
     }else{
       this.newFilter.emit(this.filterForm.value);
       console.log(this.filterForm);
@@ -89,7 +90,6 @@ export class TabellaComponent implements OnInit {
 
   clear(){
     this.flagClear = "clear";
-    this.clearForm.emit(this.flagClear);
   }
 
   aggiungiRiga(){

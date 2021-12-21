@@ -62,7 +62,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
     ctvTotaleMin: any;
     ctvTotaleMax: any;
     filterFormTemp: any = this.filterForm;
-    numElem: any = 5;
+    numElem: any;
 
 
     
@@ -298,7 +298,9 @@ export class TabellaDatiUtenteComponent implements OnInit {
           );
         }
 
-        this.elemPerPage;
+        if(this.elemPerPage == null){
+          this.elemPerPage = 10;
+        }
 
         this.tempStart = (this.currentPage * this.elemPerPage) - this.elemPerPage;
         this.tempEnd = (this.currentPage * this.elemPerPage);
@@ -358,10 +360,11 @@ export class TabellaDatiUtenteComponent implements OnInit {
            
  
 
-  clear(flagClear:any){
-   
-    this.ngOnInit();
-}
+//   clear(flagClear:any){
+//     this.elemPerPage = 10;
+//     console.log(flagClear);
+//     this.ngOnInit();
+// }
 
 
 
