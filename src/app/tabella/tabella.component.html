@@ -1,6 +1,6 @@
 <div class="container">
   <div class="container-form">
-    <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" >
       <div class="filter">
         <label for="nominativo">Nominativo: </label>
         <input id="nominativo" type="text" formControlName="nominativo">
@@ -61,23 +61,12 @@
         <label for="ctvTotaleMax">CTV Totale Max: </label>
         <input id="ctvTotaleMax" type="number" formControlName="ctvTotaleMax">
       </div>
-      <button>Filtra</button>
+      <button>Filter</button>
+      <button (click)="clear()">Clear</button>
     </form>
   </div>
 
-<!--
-   filterForm = new FormGroup({
-      nominativo: new FormControl(''),
-      ndg: new FormControl(0),
-      businessUnit: new FormControl(0),
-      ctvAmministrativo: new FormControl(0),
-      ctvAssicurato: new FormControl(0),
-      ctvDiretto: new FormControl(0),
-      ctvGestito: new FormControl(0),
-      ctvTotale: new FormControl(0),
-  });
-    
--->
+
   <div class="container-tabella">
     <table>
       <ng-container>

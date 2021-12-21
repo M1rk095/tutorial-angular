@@ -10,6 +10,7 @@ import { EventEmitter } from '@angular/core';
 export class TabellaComponent implements OnInit {
 
   flag: any = "normale";
+  flagClear: any = "";
   selectedColumn: any = "";
 
   @Input() rows: any;
@@ -24,6 +25,7 @@ export class TabellaComponent implements OnInit {
   @Output() changePage = new EventEmitter();
   @Output() newOrdinaColonna= new EventEmitter();
   @Output() newFilter = new EventEmitter();
+  @Output() clearForm = new EventEmitter();
   
  
   
@@ -75,7 +77,17 @@ export class TabellaComponent implements OnInit {
   }
 
   onSubmit() {
-    this.newFilter.emit(this.filterForm.value);
+    if(this.flagClear =="clear"){
+      this.flagClear = "";
+      this.filterForm.reset();
+    }else{
+      this.newFilter.emit(this.filterForm.value);
+    }
+    
+  }
+
+  clear(){
+    this.flagClear = "clear";
   }
 
 }

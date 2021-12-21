@@ -42,23 +42,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
     ctvTotaleMin: any = -9999999
     ctvTotaleMax: any = 999999999999;
 
-  filterForm = new FormGroup({
-      nominativo: new FormControl(''),
-      ndgMin: new FormControl(0),
-      ndgMax: new FormControl(99999999),
-      businessUnitMin: new FormControl(0),
-      businessUnitMax: new FormControl(99999999),
-      ctvAmministrativoMin: new FormControl(0),
-      ctvAmministrativoMax: new FormControl(99999999),
-      ctvAssicuratoMin: new FormControl(0),
-      ctvAssicuratoMax: new FormControl(99999999),
-      ctvDirettoMin: new FormControl(0),
-      ctvDirettoMax: new FormControl(99999999),
-      ctvGestitoMin: new FormControl(0),
-      ctvGestitoMax: new FormControl(99999999),
-      ctvTotaleMin: new FormControl(0),
-      ctvTotaleMax: new FormControl(99999999),
-  });
+
     
   orderColumn: any = "normale";
   orderColumnFlag: any = 0;
@@ -74,10 +58,28 @@ export class TabellaDatiUtenteComponent implements OnInit {
   tempStart: any = 0;
   tempEnd: any = 10;
 
+  filterForm: any;
 
   constructor(private tabellaService:TabellaService) { }
 
   ngOnInit(): void {
+    this.filterForm = new FormGroup({
+      nominativo: new FormControl(''),
+      ndgMin: new FormControl(0),
+      ndgMax: new FormControl(999999999),
+      businessUnitMin: new FormControl(0),
+      businessUnitMax: new FormControl(999999999),
+      ctvAmministrativoMin: new FormControl(0),
+      ctvAmministrativoMax: new FormControl(999999999),
+      ctvAssicuratoMin: new FormControl(0),
+      ctvAssicuratoMax: new FormControl(999999999),
+      ctvDirettoMin: new FormControl(0),
+      ctvDirettoMax: new FormControl(999999999),
+      ctvGestitoMin: new FormControl(0),
+      ctvGestitoMax: new FormControl(999999999),
+      ctvTotaleMin: new FormControl(0),
+      ctvTotaleMax: new FormControl(999999999),
+  });
     this.getData();
 
   }
@@ -88,9 +90,15 @@ export class TabellaDatiUtenteComponent implements OnInit {
         
         
         for(let i = 0; i < resp.length; i++){
-          if(this.check(resp[i].ndgCliente, resp[i].businessUnit,resp[i].ctvAmministrato,resp[i].ctvAssicurativo,
-            resp[i].ctvDiretto,resp[i].ctvGestito,resp[i].ctvTotale)){
-              console.log(resp[i].nominativoCliente);
+          if(this.ndgMin > resp[i].ndgCliente || this.ndgMax < resp[i].ndgCliente || 
+            this.businessUnitMin > resp[i].businessUnit || this.businessUnitMax < resp[i].businessUnit ||
+            this.ctvGestitoMin > resp[i].ctvGestito || this.ctvGestitoMax < resp[i].ctvGestito ||
+            this.ctvAmministrativoMin > resp[i].ctvAmministrativo || 
+            this.ctvAmministrativoMax < resp[i].ctvAmministrativo ||
+            this.ctvAssicuratoMin > resp[i].ctvctvAssicurativo ||
+            this.ctvAssicuratoMax < resp[i].ctvAssicurativo ||
+            this.ctvDirettoMin > resp[i].ctvDiretto || this.ctvDirettoMax < resp[i].ctvDiretto ||
+            this.ctvTotaleMin > resp[i].ctvTotale || this.ctvTotaleMax < resp[i].ctvTotale){
               resp.splice(i,1);
               i--;
           }
@@ -253,7 +261,6 @@ export class TabellaDatiUtenteComponent implements OnInit {
   getFilter(newFilter: any) {
     this.nominativo = newFilter.nominativo;
     this.ndgMin = newFilter.ndgMin;
-    console.log(this.ndgMin);
     this.ndgMax = newFilter.ndgMax;
     this.businessUnitMin = newFilter.businessUnitMin;
     this.businessUnitMax = newFilter.businessUnitMax;
@@ -271,36 +278,27 @@ export class TabellaDatiUtenteComponent implements OnInit {
     
   }
 
-  check(ndg: any, businessUnit: any, ctvAmministrativo:any, ctvAssicurato: any,
-     ctvDiretto: any, ctvGestito: any, ctvTotale: any){
+  clear(clearString:any){
 
-      if( this.ndgMin < ndg && this.ndgMax > ndg && this.businessUnitMin < businessUnit &&
-        this.businessUnitMax > businessUnit && this.ctvAmministrativoMin < ctvAmministrativo &&
-        this.ctvAmministrativoMax > ctvAmministrativo && this.ctvAssicuratoMin < ctvAssicurato &&
-        this.ctvAssicuratoMax > ctvAssicurato &&
-        this.ctvDirettoMin < ctvDiretto && this.ctvDirettoMax > ctvDiretto &&
-        this.ctvGestitoMin < ctvGestito && this.ctvGestitoMax > ctvGestito &&
-        this.ctvTotaleMin < ctvTotale && this.ctvTotaleMax > ctvTotale){
-          return false;
-        }
-      return true;
+    this.nominativo = "";
+    this.ndgMin = 0;
+    this.ndgMax = 999999999;
+    this.businessUnitMin = 0;
+    this.businessUnitMax = 999999999;
+    this.ctvAmministrativoMin = 0;
+    this.ctvAmministrativoMax = 999999999;
+    this.ctvAssicuratoMin = 0;
+    this.ctvAssicuratoMax = 999999999;
+    this.ctvDirettoMin = 0;
+    this.ctvDirettoMax = 999999999;
+    this.ctvGestitoMin = 0;
+    this.ctvGestitoMax = 999999999;
+    this.ctvTotaleMin = 0;
+    this.ctvTotaleMax = 999999999;
+    this.ngOnInit();
+}
 
-  }
 
-  // ndgMin: any = 0;
-  // ndgMax: any = 99999999;
-  // businessUnitMin: any = 0;
-  // businessUnitMax: any = 99999999;
-  // ctvAmministrativoMin: any = 0;
-  // ctvAmministrativoMax: any = 99999999;
-  // ctvAssicuratoMin: any = 0;
-  // ctvAssicuratoMax: any = 99999999;
-  // ctvDirettoMin: any = 0;
-  // ctvDirettoMax: any = 99999999;
-  // ctvGestitoMin: any = 0;
-  // ctvGestitoMax: any = 99999999;
-  // ctvTotaleMin: any = 0;
-  // ctvTotaleMax: any = 99999999;
 
   
 }
