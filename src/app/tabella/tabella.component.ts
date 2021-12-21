@@ -82,12 +82,14 @@ export class TabellaComponent implements OnInit {
       this.filterForm.reset();
     }else{
       this.newFilter.emit(this.filterForm.value);
+      console.log(this.filterForm);
     }
     
   }
 
   clear(){
     this.flagClear = "clear";
+    this.clearForm.emit(this.flagClear);
   }
 
   aggiungiRiga(){

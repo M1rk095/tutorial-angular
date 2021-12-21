@@ -27,21 +27,21 @@ export class TabellaDatiUtenteComponent implements OnInit {
     ]);
 
     nominativo: any;
-    ndgMin: any = -9999999;
-    ndgMax: any = 99999999999;
-    businessUnitMin: any = -9999999
-    businessUnitMax: any = 999999999999;
-    ctvAmministrativoMin: any = -9999999
-    ctvAmministrativoMax: any = 999999999999;
-    ctvAssicuratoMin: any = -9999999
-    ctvAssicuratoMax: any = 999999999999;
-    ctvDirettoMin: any = -9999999
-    ctvDirettoMax: any = 999999999999;
-    ctvGestitoMin: any = -9999999
-    ctvGestitoMax: any = 999999999999;
-    ctvTotaleMin: any = -9999999
-    ctvTotaleMax: any = 999999999999;
-    numElem: any = 10;
+    ndgMin: any;
+    ndgMax: any;
+    businessUnitMin: any;
+    businessUnitMax: any;
+    ctvAmministrativoMin: any;
+    ctvAmministrativoMax: any;
+    ctvAssicuratoMin: any;
+    ctvAssicuratoMax: any;
+    ctvDirettoMin: any;
+    ctvDirettoMax: any;
+    ctvGestitoMin: any;
+    ctvGestitoMax: any;
+    ctvTotaleMin: any;
+    ctvTotaleMax: any;
+    numElem: any;
 
 
     
@@ -58,57 +58,36 @@ export class TabellaDatiUtenteComponent implements OnInit {
   arrayTemp: any = [];
   arrayTemp2: any = [];
   tempStart: any = 0;
-  tempEnd: any = 10;
+  tempEnd: any = this.elemPerPage;
 
-  filterForm: any;
+  filterForm = new FormGroup({
+    nominativo: new FormControl(),
+    ndgMin: new FormControl(),
+    ndgMax: new FormControl(),
+    businessUnitMin: new FormControl(),
+    businessUnitMax: new FormControl(),
+    ctvAmministrativoMin: new FormControl(),
+    ctvAmministrativoMax: new FormControl(),
+    ctvAssicuratoMin: new FormControl(),
+    ctvAssicuratoMax: new FormControl(),
+    ctvDirettoMin: new FormControl(),
+    ctvDirettoMax: new FormControl(),
+    ctvGestitoMin: new FormControl(),
+    ctvGestitoMax: new FormControl(),
+    ctvTotaleMin: new FormControl(),
+    ctvTotaleMax: new FormControl(),
+    numElem: new FormControl()
+});
 
   constructor(private tabellaService:TabellaService) { }
 
   ngOnInit(): void {
-    this.filterForm = new FormGroup({
-      nominativo: new FormControl(''),
-      ndgMin: new FormControl(0),
-      ndgMax: new FormControl(999999999),
-      businessUnitMin: new FormControl(0),
-      businessUnitMax: new FormControl(999999999),
-      ctvAmministrativoMin: new FormControl(0),
-      ctvAmministrativoMax: new FormControl(999999999),
-      ctvAssicuratoMin: new FormControl(0),
-      ctvAssicuratoMax: new FormControl(999999999),
-      ctvDirettoMin: new FormControl(0),
-      ctvDirettoMax: new FormControl(999999999),
-      ctvGestitoMin: new FormControl(0),
-      ctvGestitoMax: new FormControl(999999999),
-      ctvTotaleMin: new FormControl(0),
-      ctvTotaleMax: new FormControl(999999999),
-      numElem: new FormControl(10)
-  });
-    
     this.getData();
-
   }
 
   getData(){
     this.tabellaService.getData().subscribe(
       (resp: any) => {  
-        
-        if(this.numElem != 10){
-          this.tempEnd = this.numElem;
-        }
-        for(let i = 0; i < resp.length; i++){
-          if(this.ndgMin > resp[i].ndgCliente || this.ndgMax < resp[i].ndgCliente || 
-            this.businessUnitMin > resp[i].businessUnit || this.businessUnitMax < resp[i].businessUnit ||
-            this.ctvGestitoMin > resp[i].ctvGestito || this.ctvGestitoMax < resp[i].ctvGestito ||
-            this.ctvAmministrativoMin > resp[i].ctvAmministrativo || 
-            this.ctvAmministrativoMax < resp[i].ctvAmministrativo ||
-            this.ctvAssicuratoMin > resp[i].ctvctvAssicurativo ||
-            this.ctvAssicuratoMax < resp[i].ctvAssicurativo ||
-            this.ctvDirettoMin > resp[i].ctvDiretto || this.ctvDirettoMax < resp[i].ctvDiretto ||
-            this.ctvTotaleMin > resp[i].ctvTotale || this.ctvTotaleMax < resp[i].ctvTotale){
-              resp.splice(i,1);
-              i--;
-          }
-       }
 
         resp.sort(function(a:any, b:any){
           if(a.nominativoCliente < b.nominativoCliente) { return -1; }
@@ -181,7 +160,6 @@ export class TabellaDatiUtenteComponent implements OnInit {
           }
         }else if (this.orderColumn == "decrescente"){
           this.orderColumnFlag = 2;
-          console.log(this.columnToOrder);
           switch (this.columnToOrder) {     
               case "ndgCliente":
                   resp.sort(function(a:any, b:any){
@@ -237,21 +215,87 @@ export class TabellaDatiUtenteComponent implements OnInit {
                   break;
           }
         }
-
-        
-
-        this.arrayTemp2 = resp.slice(this.tempStart, this.tempEnd);
-
-        if(!(this.nominativo == "")){
-          console.log(this.nominativo);
-          this.arrayTemp2 = resp.filter(
+        this.arrayTemp = resp;
+        if(this.nominativo != null){
+          this.arrayTemp = resp.filter(
+            (row: any) => row.nominativoCliente.includes(this.nominativo)
             
-            (name: any) => name.nominativoCliente.includes(this.nominativo)
+          );
+          
+        }
+        if(this.ndgMin != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(row.ndgCliente, this.ndgMin)
+          );
+        }
+        if(this.ndgMax != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(this.ndgMax, row.ndgCliente)
+          );
+        }
+        if(this.businessUnitMin != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(row.businessUnit, this.businessUnitMin)
+          );
+        }
+        if(this.businessUnitMax != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(this.businessUnitMax, row.businessUnit)
+          );
+        }
+        if(this.ctvGestitoMin != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(row.ctvGestito, this.ctvGestitoMin)
+          );
+        }
+        if(this.ctvGestitoMax != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(this.ctvGestitoMax, row.ctvGestito)
+          );
+        }
+        if(this.ctvAmministrativoMin != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(row.ctvAmministrato, this.ctvAmministrativoMin)
+          );
+        }
+        if(this.ctvAmministrativoMax != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(this.ctvAmministrativoMax, row.ctvAmministrato)
+          );
+        }
+        if(this.ctvAssicuratoMin!= null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(row.ctvAssicurativo, this.ctvAssicuratoMin)
+          );
+        }
+        if(this.ctvAssicuratoMax != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(this.ctvAssicuratoMax, row.ctvAssicurativo)
+          );
+        }
+        if(this.ctvDirettoMin != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(row.ctvDiretto, this.ctvDirettoMin)
+          );
+        }
+        if(this.ctvDirettoMax != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(this.ctvDirettoMax, row.ctvDiretto)
+          );
+        }
+        if(this.ctvTotaleMin != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(row.ctvTotale, this.ctvTotaleMin)
+          );
+        }
+        if(this.ctvTotaleMax != null){
+          this.arrayTemp = this.arrayTemp.filter(
+            (row: any) => this.filterNumber(this.ctvTotaleMax, row.ctvTotale)
           );
         }
 
-        this.arrayTemp = this.arrayTemp2;
-        this.rows = this.arrayTemp;
+
+        this.rows = this.arrayTemp.slice(this.tempStart, this.tempEnd);
         this.dataSourceLength = resp.length;
 
         this.lengthMenu = Math.ceil(this.dataSourceLength/this.elemPerPage);
@@ -298,24 +342,17 @@ export class TabellaDatiUtenteComponent implements OnInit {
     
   }
 
-  clear(clearString:any){
+  filterNumber(number1:any, number2:any) { 
+    if(number1 > number2){
+      return true; 
+    }
+    return false;
+ } 
+           
+ 
 
-    this.nominativo = "";
-    this.ndgMin = 0;
-    this.ndgMax = 999999999;
-    this.businessUnitMin = 0;
-    this.businessUnitMax = 999999999;
-    this.ctvAmministrativoMin = 0;
-    this.ctvAmministrativoMax = 999999999;
-    this.ctvAssicuratoMin = 0;
-    this.ctvAssicuratoMax = 999999999;
-    this.ctvDirettoMin = 0;
-    this.ctvDirettoMax = 999999999;
-    this.ctvGestitoMin = 0;
-    this.ctvGestitoMax = 999999999;
-    this.ctvTotaleMin = 0;
-    this.ctvTotaleMax = 999999999;
-    this.numElem = 10;
+  clear(flagClear:any){
+   
     this.ngOnInit();
 }
 
