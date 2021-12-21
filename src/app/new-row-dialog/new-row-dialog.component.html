@@ -1,5 +1,10 @@
 <div mat-dialog-content>{{message}}</div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onClickNO()">NO</button>
-    <button mat-button [mat-dialog-close]="true">SI</button>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()" >
+        <label for="newName">Nominativo: </label>
+        <input id="newName" type="text" formControlName="newName">
+        <button class="button-form">Salva</button>
+    </form>
+    
+    
 </div>
