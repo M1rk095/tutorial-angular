@@ -41,6 +41,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
     ctvGestitoMax: any = 999999999999;
     ctvTotaleMin: any = -9999999
     ctvTotaleMax: any = 999999999999;
+    numElem: any = 10;
 
 
     
@@ -55,6 +56,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
   currentPage: any = 1;
   lengthMenu: any;
   arrayTemp: any = [];
+  arrayTemp2: any = [];
   tempStart: any = 0;
   tempEnd: any = 10;
 
@@ -79,7 +81,9 @@ export class TabellaDatiUtenteComponent implements OnInit {
       ctvGestitoMax: new FormControl(999999999),
       ctvTotaleMin: new FormControl(0),
       ctvTotaleMax: new FormControl(999999999),
+      numElem: new FormControl(10)
   });
+    
     this.getData();
 
   }
@@ -88,7 +92,9 @@ export class TabellaDatiUtenteComponent implements OnInit {
     this.tabellaService.getData().subscribe(
       (resp: any) => {  
         
-        
+        if(this.numElem != 10){
+          this.tempEnd = this.numElem;
+        }
         for(let i = 0; i < resp.length; i++){
           if(this.ndgMin > resp[i].ndgCliente || this.ndgMax < resp[i].ndgCliente || 
             this.businessUnitMin > resp[i].businessUnit || this.businessUnitMax < resp[i].businessUnit ||
@@ -232,9 +238,22 @@ export class TabellaDatiUtenteComponent implements OnInit {
           }
         }
 
-        this.arrayTemp = resp.slice(this.tempStart, this.tempEnd);
+        
+
+        this.arrayTemp2 = resp.slice(this.tempStart, this.tempEnd);
+
+        if(!(this.nominativo == "")){
+          console.log(this.nominativo);
+          this.arrayTemp2 = resp.filter(
+            
+            (name: any) => name.nominativoCliente.includes(this.nominativo)
+          );
+        }
+
+        this.arrayTemp = this.arrayTemp2;
         this.rows = this.arrayTemp;
         this.dataSourceLength = resp.length;
+
         this.lengthMenu = Math.ceil(this.dataSourceLength/this.elemPerPage);
         for (let i = 1; i <= this.lengthMenu; i++) {
           this.menu[i] = i;
@@ -274,6 +293,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
     this.ctvGestitoMax = newFilter.ctvGestitoMax;
     this.ctvTotaleMin = newFilter.ctvTotaleMin;
     this.ctvTotaleMax = newFilter.ctvTotaleMax;
+    this.numElem = newFilter.numElem;
     this.ngOnInit();
     
   }
@@ -295,6 +315,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
     this.ctvGestitoMax = 999999999;
     this.ctvTotaleMin = 0;
     this.ctvTotaleMax = 999999999;
+    this.numElem = 10;
     this.ngOnInit();
 }
 

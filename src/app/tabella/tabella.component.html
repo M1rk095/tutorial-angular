@@ -61,14 +61,19 @@
         <label for="ctvTotaleMax">CTV Totale Max: </label>
         <input id="ctvTotaleMax" type="number" formControlName="ctvTotaleMax">
       </div>
-      <button>Filter</button>
-      <button (click)="clear()">Clear</button>
+      <div class="filter"> 
+        <label for="numElem">Numero di elementi per riga: </label>
+        <input id="numElem" type="number" formControlName="numElem">
+      </div>
+      <button class="button-form">Filter</button>
+      <button class="button-form" (click)="clear()">Clear</button>
+      <button class="button-form" (click)="aggiungiRiga()">Aggiungi riga</button>
     </form>
   </div>
 
 
   <div class="container-tabella">
-    <table>
+    <table id="customers">
       <ng-container>
         <tr>
           <th *ngFor = "let column of headers"

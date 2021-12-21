@@ -20,6 +20,8 @@ import { FormsModule } from '@angular/forms';
 import { TabellaComponent } from './tabella/tabella.component';
 import { TabellaDatiUtenteComponent } from './tabella-dati-utente/tabella-dati-utente.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

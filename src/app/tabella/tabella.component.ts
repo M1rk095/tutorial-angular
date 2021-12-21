@@ -90,5 +90,9 @@ export class TabellaComponent implements OnInit {
     this.flagClear = "clear";
   }
 
+  aggiungiRiga(){
+    console.log("aggiungi riga");
+  }
+
 }
 
