@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200vh;
-    width: 100vw;
+    
     background-color: #c4eec5;
 }
 
@@ -22,7 +21,8 @@
 .container-form{
     display: flex;
     justify-content: space-between;
-    background-color: #c4eec5;
+    border: 2px solid green;
+    border-radius: 5px;
 }
 
 .filter{
@@ -101,15 +101,25 @@ table, th , td {
 
 .button-form {
     background-color: #04AA6D;;
-    border: none;
+    border: 2px solid green;
+    border-radius: 5px;
     color: white;
     padding: 10px 15px;
     text-align: center;
     text-decoration: none;
+    font-weight: bold;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+.button-form-mat {
+    background-color: #04AA6D;
+    border: 2px solid green;
+    color: white;
+    border-radius: 5px;
+    padding: 1px 15px;
 }
 
   

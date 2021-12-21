@@ -22,7 +22,10 @@ import { TabellaDatiUtenteComponent } from './tabella-dati-utente/tabella-dati-u
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { NewRowDialogComponent } from './new-row-dialog/new-row-dialog.component';
+  
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { MatSliderModule } from '@angular/material/slider';
     RssComponent,
     MenuComponent,
     TabellaComponent,
-    TabellaDatiUtenteComponent
+    TabellaDatiUtenteComponent,
+    NewRowDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,8 +53,11 @@ import { MatSliderModule } from '@angular/material/slider';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatDialogModule,
+    MatButtonModule
   ],
+  entryComponents: [NewRowDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

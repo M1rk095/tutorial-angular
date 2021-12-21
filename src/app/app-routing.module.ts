@@ -9,7 +9,6 @@ import { QuickProfileDetailsComponent } from './quick-profile-details/quick-prof
 import { RssComponent } from './rss/rss.component';
 import { TabellaComponent } from './tabella/tabella.component';
 import { TabellaDatiUtenteComponent } from './tabella-dati-utente/tabella-dati-utente.component';
-import { MatSliderModule } from '@angular/material/slider';
 
 
 const routes: Routes = [

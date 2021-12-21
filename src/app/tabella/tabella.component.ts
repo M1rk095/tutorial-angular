@@ -1,6 +1,8 @@
-import { Component, Input, Output, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit} from '@angular/core';
 import { TabellaService } from '../tabella.service';
 import { EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NewRowDialogComponent } from '../new-row-dialog/new-row-dialog.component';
 
 @Component({
   selector: 'app-tabella',
@@ -27,13 +29,18 @@ export class TabellaComponent implements OnInit {
   @Output() newFilter = new EventEmitter();
   @Output() clearForm = new EventEmitter();
   
- 
-  
-
-  constructor(private tabellaService:TabellaService) { }
+  constructor(private tabellaService:TabellaService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     
+  }
+
+  openDialog(): void{
+    const dialogRef = this.dialog.open(NewRowDialogComponent, {});
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+    });
   }
 
   selectedCurrentPage?: any;
@@ -80,7 +87,7 @@ export class TabellaComponent implements OnInit {
     if(this.flagClear =="clear"){
       this.flagClear = "";
       this.filterForm.reset();
-      this.newFilter.emit(this.filterForm.value);
+      this.newFilter.emit(this.filterForm.value); 
     }else{
       this.newFilter.emit(this.filterForm.value);
       console.log(this.filterForm);
