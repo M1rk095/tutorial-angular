@@ -63,6 +63,8 @@ export class TabellaDatiUtenteComponent implements OnInit {
     ctvTotaleMax: any;
     filterFormTemp: any = this.filterForm;
     numElem: any;
+    newRowFlag: any = false;
+    resp: any;
 
 
     
@@ -91,14 +93,14 @@ export class TabellaDatiUtenteComponent implements OnInit {
 
   getData(){
     this.tabellaService.getData().subscribe(
-      (resp: any) => {  
-
-        resp.sort(function(a:any, b:any){
+      (response: any) => {  
+        this.resp = response;
+        this.resp.sort(function(a:any, b:any){
           if(a.nominativoCliente < b.nominativoCliente) { return -1; }
           if(a.nominativoCliente > b.nominativoCliente) { return 1; }
           return 0;
         })
-        resp.sort(function(a:any, b:any){
+        this.resp.sort(function(a:any, b:any){
           if(a.nominativoCliente < b.nominativoCliente) { return -1; }
           if(a.nominativoCliente > b.nominativoCliente) { return 1; }
           return 0;
@@ -110,49 +112,49 @@ export class TabellaDatiUtenteComponent implements OnInit {
           console.log(this.columnToOrder);
           switch (this.columnToOrder) {     
               case "ndgCliente":
-                  resp.sort(function(a:any, b:any){
+                  this.resp.sort(function(a:any, b:any){
                     if(a.ndgCliente < b.ndgCliente) { return -1; }
                     if(a.ndgCliente > b.ndgCliente) { return 1; }
                     return 0;
                   })
                   break;
               case "businessUnit":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.businessUnit < b.businessUnit) { return -1; }
                   if(a.businessUnit > b.businessUnit) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvAmministrato":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvAmministrato < b.ctvAmministrato) { return -1; }
                   if(a.ctvAmministrato > b.ctvAmministrato) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvAssicurativo":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvAssicurativo < b.ctvAssicurativo) { return -1; }
                   if(a.ctvAssicurativo > b.ctvAssicurativo) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvDiretto":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvDiretto < b.ctvDiretto) { return -1; }
                   if(a.ctvDiretto > b.ctvDiretto) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvGestito":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvGestito < b.ctvGestito) { return -1; }
                   if(a.ctvGestito > b.ctvGestito) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvTotale":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvTotale < b.ctvTotale) { return -1; }
                   if(a.ctvTotale > b.ctvTotale) { return 1; }
                   return 0;
@@ -166,49 +168,49 @@ export class TabellaDatiUtenteComponent implements OnInit {
           this.orderColumnFlag = 2;
           switch (this.columnToOrder) {     
               case "ndgCliente":
-                  resp.sort(function(a:any, b:any){
+                  this.resp.sort(function(a:any, b:any){
                     if(a.ndgCliente > b.ndgCliente) { return -1; }
                     if(a.ndgCliente < b.ndgCliente) { return 1; }
                     return 0;
                   })
                   break;
               case "businessUnit":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.businessUnit > b.businessUnit) { return -1; }
                   if(a.businessUnit < b.businessUnit) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvAmministrato":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvAmministrato > b.ctvAmministrato) { return -1; }
                   if(a.ctvAmministrato < b.ctvAmministrato) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvAssicurativo":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvAssicurativo > b.ctvAssicurativo) { return -1; }
                   if(a.ctvAssicurativo < b.ctvAssicurativo) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvDiretto":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvDiretto > b.ctvDiretto) { return -1; }
                   if(a.ctvDiretto < b.ctvDiretto) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvGestito":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvGestito > b.ctvGestito) { return -1; }
                   if(a.ctvGestito < b.ctvGestito) { return 1; }
                   return 0;
                 })
                 break;
               case "ctvTotale":
-                resp.sort(function(a:any, b:any){
+                this.resp.sort(function(a:any, b:any){
                   if(a.ctvTotale > b.ctvTotale) { return -1; }
                   if(a.ctvTotale < b.ctvTotale) { return 1; }
                   return 0;
@@ -219,9 +221,9 @@ export class TabellaDatiUtenteComponent implements OnInit {
                   break;
           }
         }
-        this.arrayTemp = resp;
+        this.arrayTemp = this.resp;
         if(this.nominativo != null){
-          this.arrayTemp = resp.filter(
+          this.arrayTemp = this.resp.filter(
             (row: any) => row.nominativoCliente.includes(this.nominativo)
             
           );
@@ -306,13 +308,21 @@ export class TabellaDatiUtenteComponent implements OnInit {
         this.tempEnd = (this.currentPage * this.elemPerPage);
 
         this.rows = this.arrayTemp.slice(this.tempStart, this.tempEnd);
-        this.dataSourceLength = resp.length;
+        this.dataSourceLength = this.resp.length;
 
         this.lengthMenu = Math.ceil(this.dataSourceLength/this.elemPerPage);
         for (let i = 1; i <= this.lengthMenu; i++) {
           this.menu[i] = i;
         }
       });
+  }
+
+  updateTable(newRow:any){
+    this.resp.push(newRow);
+    console.log(newRow);
+    
+    this.ngOnInit();
+    
   }
 
   changeCurrentPage(newCurrentPage: any) {

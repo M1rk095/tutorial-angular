@@ -4,6 +4,7 @@ import { EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewRowDialogComponent } from '../new-row-dialog/new-row-dialog.component';
 
+
 @Component({
   selector: 'app-tabella',
   templateUrl: './tabella.component.html',
@@ -29,6 +30,7 @@ export class TabellaComponent implements OnInit {
   @Output() newOrdinaColonna= new EventEmitter();
   @Output() newFilter = new EventEmitter();
   @Output() clearForm = new EventEmitter();
+  @Output() newRowEvent = new EventEmitter();
   
   constructor(private tabellaService:TabellaService,
     public dialog: MatDialog) { }
@@ -41,8 +43,7 @@ export class TabellaComponent implements OnInit {
     const dialogRef = this.dialog.open(NewRowDialogComponent, {});
     dialogRef.afterClosed().subscribe(res => {
       this.newRow = res;
-      this.newRow.newListaAzioni = [];
-      console.log("arrivato");
+      this.newRowEvent.emit(this.newRow);
     });
   }
 

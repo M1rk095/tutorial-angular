@@ -11,13 +11,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class NewRowDialogComponent implements OnInit {
 
   newNominativoCliente: any = '';
-  newNdgCliente: any;
-  newBusinessUnit: any;
-  newCtvGestito: any;
-  newCtvAmministrato: any;
-  newCtvAssicurativo: any;
-  newCtvDiretto: any;
-  newCtvTotale: any;
+  newNdgCliente: any ='';
+  newBusinessUnit: any = '';
+  newCtvGestito: any = '';
+  newCtvAmministrato: any = '';
+  newCtvAssicurativo: any = '';
+  newCtvDiretto: any = '';
+  newCtvTotale: any = '';
   newListaAzioni: any;
 
   addRow = new FormGroup({
