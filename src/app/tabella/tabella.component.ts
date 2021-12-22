@@ -39,6 +39,7 @@ export class TabellaComponent implements OnInit {
   openDialog(): void{
     const dialogRef = this.dialog.open(NewRowDialogComponent, {});
     dialogRef.afterClosed().subscribe(res => {
+      console.log("son qui");
       console.log(res);
     });
   }

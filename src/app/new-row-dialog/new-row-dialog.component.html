@@ -1,10 +1,45 @@
-<div mat-dialog-content>{{message}}</div>
+<div mat-dialog-content>Aggiungi nuova riga:</div>
 <div mat-dialog-actions>
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()" >
-        <label for="newName">Nominativo: </label>
-        <input id="newName" type="text" formControlName="newName">
-        <button class="button-form">Salva</button>
-    </form>
-    
-    
+    <form [formGroup]="addRow" (ngSubmit)="onSubmit()" >
+        <div class="form">
+            <label for="newNominativoCliente">Nominativo: </label>
+            <input id="newNominativoCliente" type="text" formControlName="newNominativoCliente">
+        </div>
+        <div class="form">
+            <label for="newNdgCliente">NDG: </label>
+            <input id="newNdgCliente" type="number" formControlName="newNdgCliente">
+        </div>
+        <div class="form">
+            <label for="newBusinessUnit">Business Unit: </label>
+            <input id="newBusinessUnit" type="text" formControlName="newBusinessUnit">
+        </div>
+        <div class="form">
+            <label for="newCtvGestito">CTV Gestito: </label>
+            <input id="newCtvGestito" type="text" formControlName="newCtvGestito">
+        </div>
+        <div class="form">
+            <label for="newCtvAmministrato">CTV Amministrato: </label>
+            <input id="newCtvAmministrato" type="text" formControlName="newCtvAmministrato">
+        </div>
+        <div class="form">
+            <label for="newCtvAssicurativo">CTV Assicurato: </label>
+            <input id="newCtvAssicurativo" type="text" formControlName="newCtvAssicurativo">
+        </div>
+        <div class="form">
+            <label for="newCtvDiretto">CTV Diretto: </label>
+            <input id="newCtvDiretto" type="text" formControlName="newCtvDiretto">
+        </div>
+        <div class="form">
+            <label for="newCtvTotale: ">CTV Totale: </label>
+            <input id="newCtvTotale" type="text" formControlName="newCtvTotale">
+        </div>
+        <div class="form">
+            <label for="newListaAzioni">Lista Azioni: </label>
+            <input id="newListaAzioni" type="text" formControlName="newListaAzioni">
+        </div>
+        <div>
+            <button mat-button [mat-dialog-close]=addRow.value>Salva</button>
+            <button mat-button mat-dialog-close="false">Annulla</button>
+        </div>
+    </form>  
 </div>
