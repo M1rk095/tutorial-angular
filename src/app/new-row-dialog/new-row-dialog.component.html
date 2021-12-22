@@ -3,7 +3,8 @@
     <form [formGroup]="addRow" (ngSubmit)="onSubmit()" >
         <div class="form">
             <label for="newNominativoCliente">Nominativo: </label>
-            <input id="newNominativoCliente" type="text" formControlName="newNominativoCliente">
+            <input id="newNominativoCliente" [(ngModel)]="newNominativoCliente" type="text" formControlName="newNominativoCliente" 
+                required minlength="3" maxlength="15">
         </div>
         <div class="form">
             <label for="newNdgCliente">NDG: </label>
@@ -34,11 +35,11 @@
             <input id="newCtvTotale" type="text" formControlName="newCtvTotale">
         </div>
         <div class="form">
-            <label for="newListaAzioni">Lista Azioni: </label>
+            <label for="newListaAzioni">newListaAzioni: </label>
             <input id="newListaAzioni" type="text" formControlName="newListaAzioni">
         </div>
         <div>
-            <button mat-button [mat-dialog-close]=addRow.value>Salva</button>
+            <button mat-button [mat-dialog-close]=addRow.value class="btn btn-primary" [disabled]="newNominativoCliente === ''">Salva</button>
             <button mat-button mat-dialog-close="false">Annulla</button>
         </div>
     </form>  

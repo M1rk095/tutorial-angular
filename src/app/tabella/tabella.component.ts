@@ -14,6 +14,7 @@ export class TabellaComponent implements OnInit {
   flag: any = "normale";
   flagClear: any = "";
   selectedColumn: any = "";
+  newRow: any;
 
   @Input() rows: any;
   @Input() headers: any;
@@ -36,11 +37,12 @@ export class TabellaComponent implements OnInit {
     
   }
 
-  openDialog(): void{
+  aggiungiRiga(): void{
     const dialogRef = this.dialog.open(NewRowDialogComponent, {});
     dialogRef.afterClosed().subscribe(res => {
-      console.log("son qui");
-      console.log(res);
+      this.newRow = res;
+      this.newRow.newListaAzioni = [];
+      console.log("arrivato");
     });
   }
 
@@ -100,9 +102,7 @@ export class TabellaComponent implements OnInit {
     this.flagClear = "clear";
   }
 
-  aggiungiRiga(){
-    console.log("aggiungi riga");
-  }
+
 
 }
 

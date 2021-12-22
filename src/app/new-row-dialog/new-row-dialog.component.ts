@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-new-row-dialog',
@@ -9,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class NewRowDialogComponent implements OnInit {
 
-  newNominativoCliente: any;
+  newNominativoCliente: any = '';
   newNdgCliente: any;
   newBusinessUnit: any;
   newCtvGestito: any;
@@ -31,32 +32,20 @@ export class NewRowDialogComponent implements OnInit {
     newListaAzioni: new FormControl()
   });
 
-  // "nominativoCliente": "Beatrice Greco",
-  // "ndgCliente": 195857,
-  // "businessUnit": 15,
-  // "ctvGestito": 4,
-  // "ctvAmministrato": 200,
-  // "ctvAssicurativo": 294,
-  // "ctvDiretto": 832,
-  // "ctvTotale": 1330,
-  // "listaAzioni": []
 
   constructor(
+    private fb: FormBuilder,
     public dialogRef: MatDialogRef<NewRowDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public message: string
   ) { }
 
   ngOnInit(): void {
+
+    
   }
 
-  onClickNO(): void{
-
-    this.dialogRef.close();
-  }
-
-  
   onSubmit() {
-  
+    
   }
 
 }
