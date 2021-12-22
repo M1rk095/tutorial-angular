@@ -2,54 +2,54 @@
 <div mat-dialog-actions>
     <form [formGroup]="addRow" (ngSubmit)="onSubmit()" >
         <div class="form">
-            <label for="newNominativoCliente">Nominativo: </label>
-            <input id="newNominativoCliente" type="text" [(ngModel)]="newNominativoCliente"
-                formControlName="newNominativoCliente" required minlength="3" maxlength="15">
+            <label for="nominativoCliente">Nominativo: </label>
+            <input id="nominativoCliente" type="text" [(ngModel)]="nominativoCliente"
+                formControlName="nominativoCliente" required minlength="3" maxlength="15">
         </div>
         <div class="form">
-            <label for="newNdgCliente">NDG: </label>
-            <input id="newNdgCliente" type="number" [(ngModel)]="newNdgCliente"
-                formControlName="newNdgCliente" required min="0" max="9999999999">
+            <label for="ndgCliente">NDG: </label>
+            <input id="ndgCliente" type="number" [(ngModel)]="ndgCliente"
+                formControlName="ndgCliente" required min="0" max="9999999999">
         </div>
         <div class="form">
-            <label for="newBusinessUnit">Business Unit: </label>
-            <input id="newBusinessUnit" type="number" [(ngModel)]="newBusinessUnit"
-                formControlName="newBusinessUnit" required min="0" max="9999999999">
+            <label for="businessUnit">Business Unit: </label>
+            <input id="businessUnit" type="number" [(ngModel)]="businessUnit"
+                formControlName="businessUnit" required min="0" max="9999999999">
         </div>
         <div class="form">
-            <label for="newCtvGestito">CTV Gestito: </label>
-            <input id="newCtvGestito" type="number" [(ngModel)]="newCtvGestito"
-                formControlName="newCtvGestito" required min="0" max="9999999999">
+            <label for="ctvGestito">CTV Gestito: </label>
+            <input id="ctvGestito" type="number" [(ngModel)]="ctvGestito"
+                formControlName="ctvGestito" required min="0" max="9999999999">
         </div>
         <div class="form">
-            <label for="newCtvAmministrato">CTV Amministrato: </label>
-            <input id="newCtvAmministrato" type="number" [(ngModel)]="newCtvAmministrato"
-                formControlName="newCtvAmministrato" required min="0" max="9999999999">
+            <label for="ctvAmministrato">CTV Amministrato: </label>
+            <input id="ctvAmministrato" type="number" [(ngModel)]="ctvAmministrato"
+                formControlName="ctvAmministrato" required min="0" max="9999999999">
         </div>
         <div class="form">
-            <label for="newCtvAssicurativo">CTV Assicurato: </label>
-            <input id="newCtvAssicurativo" type="number" [(ngModel)]="newCtvAssicurativo"
-                formControlName="newCtvAssicurativo" required min="0" max="9999999999">
+            <label for="ctvAssicurativo">CTV Assicurato: </label>
+            <input id="ctvAssicurativo" type="number" [(ngModel)]="ctvAssicurativo"
+                formControlName="ctvAssicurativo" required min="0" max="9999999999">
         </div>
         <div class="form">
-            <label for="newCtvDiretto">CTV Diretto: </label>
-            <input id="newCtvDiretto" type="number" [(ngModel)]="newCtvDiretto"
-                formControlName="newCtvDiretto" required min="0" max="9999999999">
+            <label for="ctvDiretto">CTV Diretto: </label>
+            <input id="ctvDiretto" type="number" [(ngModel)]="ctvDiretto"
+                formControlName="ctvDiretto" required min="0" max="9999999999">
         </div>
         <div class="form">
-            <label for="newCtvTotale: ">CTV Totale: </label>
-            <input id="newCtvTotale" type="number" [(ngModel)]="newCtvTotale"
-                formControlName="newCtvTotale" required min="0" max="9999999999">
+            <label for="ctvTotale: ">CTV Totale: </label>
+            <input id="ctvTotale" type="number" [(ngModel)]="ctvTotale"
+                formControlName="ctvTotale" required min="0" max="9999999999">
         </div>
         <div class="form">
-            <label for="newListaAzioni">newListaAzioni: </label>
-            <input id="newListaAzioni" type="text" formControlName="newListaAzioni">
+            <label for="listaAzioni">newListaAzioni: </label>
+            <input id="listaAzioni" type="text" formControlName="listaAzioni">
         </div>
         <div>
             <button mat-button [mat-dialog-close]=addRow.value class="btn btn-primary" 
-            [disabled]="newNominativoCliente === '' || newNdgCliente === '' || newBusinessUnit === '' 
-            || newCtvGestito === '' || newCtvAmministrato === '' || newCtvAssicurativo === ''
-            || newCtvDiretto === '' || newCtvTotale === '' " >
+            [disabled]="nominativoCliente === '' || ndgCliente === '' || businessUnit === '' 
+            || ctvGestito === '' || ctvAmministrato === '' || ctvAssicurativo === ''
+            || ctvDiretto === '' || ctvTotale === '' " >
                 Add Row
             </button>
             <button mat-button mat-dialog-close="false">Annulla</button>

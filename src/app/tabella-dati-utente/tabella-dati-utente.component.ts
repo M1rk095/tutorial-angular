@@ -63,8 +63,10 @@ export class TabellaDatiUtenteComponent implements OnInit {
     ctvTotaleMax: any;
     filterFormTemp: any = this.filterForm;
     numElem: any;
+    newRowToPush:any;
     newRowFlag: any = false;
-    resp: any;
+    resp: any = [];
+    dataFlag: any = true;
 
 
     
@@ -88,238 +90,258 @@ export class TabellaDatiUtenteComponent implements OnInit {
   constructor(private tabellaService:TabellaService) { }
 
   ngOnInit(): void {
-    this.getData();
+    
+    if(this.dataFlag){
+      this.getData();
+      
+    }
+    this.dataFlag = false;
+    this.createTable();
+    
   }
+
+  
 
   getData(){
     this.tabellaService.getData().subscribe(
       (response: any) => {  
         this.resp = response;
-        this.resp.sort(function(a:any, b:any){
-          if(a.nominativoCliente < b.nominativoCliente) { return -1; }
-          if(a.nominativoCliente > b.nominativoCliente) { return 1; }
-          return 0;
-        })
-        this.resp.sort(function(a:any, b:any){
-          if(a.nominativoCliente < b.nominativoCliente) { return -1; }
-          if(a.nominativoCliente > b.nominativoCliente) { return 1; }
-          return 0;
-        })
-        if(this.orderColumn == "normale"){
-          this.orderColumnFlag = 0;
-        }else if (this.orderColumn == "crescente"){
-          this.orderColumnFlag = 1;
-          console.log(this.columnToOrder);
-          switch (this.columnToOrder) {     
-              case "ndgCliente":
-                  this.resp.sort(function(a:any, b:any){
-                    if(a.ndgCliente < b.ndgCliente) { return -1; }
-                    if(a.ndgCliente > b.ndgCliente) { return 1; }
-                    return 0;
-                  })
-                  break;
-              case "businessUnit":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.businessUnit < b.businessUnit) { return -1; }
-                  if(a.businessUnit > b.businessUnit) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvAmministrato":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvAmministrato < b.ctvAmministrato) { return -1; }
-                  if(a.ctvAmministrato > b.ctvAmministrato) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvAssicurativo":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvAssicurativo < b.ctvAssicurativo) { return -1; }
-                  if(a.ctvAssicurativo > b.ctvAssicurativo) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvDiretto":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvDiretto < b.ctvDiretto) { return -1; }
-                  if(a.ctvDiretto > b.ctvDiretto) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvGestito":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvGestito < b.ctvGestito) { return -1; }
-                  if(a.ctvGestito > b.ctvGestito) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvTotale":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvTotale < b.ctvTotale) { return -1; }
-                  if(a.ctvTotale > b.ctvTotale) { return 1; }
-                  return 0;
-                })
-                break;
-              default:
-                  console.log("Error");
-                  break;
-          }
-        }else if (this.orderColumn == "decrescente"){
-          this.orderColumnFlag = 2;
-          switch (this.columnToOrder) {     
-              case "ndgCliente":
-                  this.resp.sort(function(a:any, b:any){
-                    if(a.ndgCliente > b.ndgCliente) { return -1; }
-                    if(a.ndgCliente < b.ndgCliente) { return 1; }
-                    return 0;
-                  })
-                  break;
-              case "businessUnit":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.businessUnit > b.businessUnit) { return -1; }
-                  if(a.businessUnit < b.businessUnit) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvAmministrato":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvAmministrato > b.ctvAmministrato) { return -1; }
-                  if(a.ctvAmministrato < b.ctvAmministrato) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvAssicurativo":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvAssicurativo > b.ctvAssicurativo) { return -1; }
-                  if(a.ctvAssicurativo < b.ctvAssicurativo) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvDiretto":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvDiretto > b.ctvDiretto) { return -1; }
-                  if(a.ctvDiretto < b.ctvDiretto) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvGestito":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvGestito > b.ctvGestito) { return -1; }
-                  if(a.ctvGestito < b.ctvGestito) { return 1; }
-                  return 0;
-                })
-                break;
-              case "ctvTotale":
-                this.resp.sort(function(a:any, b:any){
-                  if(a.ctvTotale > b.ctvTotale) { return -1; }
-                  if(a.ctvTotale < b.ctvTotale) { return 1; }
-                  return 0;
-                })
-                break;
-              default:
-                  console.log("Error");
-                  break;
-          }
-        }
-        this.arrayTemp = this.resp;
-        if(this.nominativo != null){
-          this.arrayTemp = this.resp.filter(
-            (row: any) => row.nominativoCliente.includes(this.nominativo)
-            
-          );
-          
-        }
-        if(this.ndgMin != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(row.ndgCliente, this.ndgMin)
-          );
-        }
-        if(this.ndgMax != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(this.ndgMax, row.ndgCliente)
-          );
-        }
-        if(this.businessUnitMin != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(row.businessUnit, this.businessUnitMin)
-          );
-        }
-        if(this.businessUnitMax != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(this.businessUnitMax, row.businessUnit)
-          );
-        }
-        if(this.ctvGestitoMin != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(row.ctvGestito, this.ctvGestitoMin)
-          );
-        }
-        if(this.ctvGestitoMax != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(this.ctvGestitoMax, row.ctvGestito)
-          );
-        }
-        if(this.ctvAmministrativoMin != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(row.ctvAmministrato, this.ctvAmministrativoMin)
-          );
-        }
-        if(this.ctvAmministrativoMax != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(this.ctvAmministrativoMax, row.ctvAmministrato)
-          );
-        }
-        if(this.ctvAssicuratoMin!= null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(row.ctvAssicurativo, this.ctvAssicuratoMin)
-          );
-        }
-        if(this.ctvAssicuratoMax != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(this.ctvAssicuratoMax, row.ctvAssicurativo)
-          );
-        }
-        if(this.ctvDirettoMin != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(row.ctvDiretto, this.ctvDirettoMin)
-          );
-        }
-        if(this.ctvDirettoMax != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(this.ctvDirettoMax, row.ctvDiretto)
-          );
-        }
-        if(this.ctvTotaleMin != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(row.ctvTotale, this.ctvTotaleMin)
-          );
-        }
-        if(this.ctvTotaleMax != null){
-          this.arrayTemp = this.arrayTemp.filter(
-            (row: any) => this.filterNumber(this.ctvTotaleMax, row.ctvTotale)
-          );
-        }
-
-        if(this.elemPerPage == null){
-          this.elemPerPage = 10;
-        }
-
-        this.tempStart = (this.currentPage * this.elemPerPage) - this.elemPerPage;
-        this.tempEnd = (this.currentPage * this.elemPerPage);
-
-        this.rows = this.arrayTemp.slice(this.tempStart, this.tempEnd);
-        this.dataSourceLength = this.resp.length;
-
-        this.lengthMenu = Math.ceil(this.dataSourceLength/this.elemPerPage);
-        for (let i = 1; i <= this.lengthMenu; i++) {
-          this.menu[i] = i;
-        }
+  
       });
+      
+      
   }
 
+  createTable(){
+
+    console.log(this.resp);
+
+    this.resp.sort(function(a:any, b:any){
+      if(a.nominativoCliente < b.nominativoCliente) { return -1; }
+      if(a.nominativoCliente > b.nominativoCliente) { return 1; }
+      return 0;
+    })
+    this.resp.sort(function(a:any, b:any){
+      if(a.nominativoCliente < b.nominativoCliente) { return -1; }
+      if(a.nominativoCliente > b.nominativoCliente) { return 1; }
+      return 0;
+    })
+    if(this.orderColumn == "normale"){
+      this.orderColumnFlag = 0;
+    }else if (this.orderColumn == "crescente"){
+      this.orderColumnFlag = 1;
+      console.log(this.columnToOrder);
+      switch (this.columnToOrder) {     
+          case "ndgCliente":
+              this.resp.sort(function(a:any, b:any){
+                if(a.ndgCliente < b.ndgCliente) { return -1; }
+                if(a.ndgCliente > b.ndgCliente) { return 1; }
+                return 0;
+              })
+              break;
+          case "businessUnit":
+            this.resp.sort(function(a:any, b:any){
+              if(a.businessUnit < b.businessUnit) { return -1; }
+              if(a.businessUnit > b.businessUnit) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvAmministrato":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvAmministrato < b.ctvAmministrato) { return -1; }
+              if(a.ctvAmministrato > b.ctvAmministrato) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvAssicurativo":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvAssicurativo < b.ctvAssicurativo) { return -1; }
+              if(a.ctvAssicurativo > b.ctvAssicurativo) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvDiretto":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvDiretto < b.ctvDiretto) { return -1; }
+              if(a.ctvDiretto > b.ctvDiretto) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvGestito":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvGestito < b.ctvGestito) { return -1; }
+              if(a.ctvGestito > b.ctvGestito) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvTotale":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvTotale < b.ctvTotale) { return -1; }
+              if(a.ctvTotale > b.ctvTotale) { return 1; }
+              return 0;
+            })
+            break;
+          default:
+              console.log("Error");
+              break;
+      }
+    }else if (this.orderColumn == "decrescente"){
+      this.orderColumnFlag = 2;
+      switch (this.columnToOrder) {     
+          case "ndgCliente":
+              this.resp.sort(function(a:any, b:any){
+                if(a.ndgCliente > b.ndgCliente) { return -1; }
+                if(a.ndgCliente < b.ndgCliente) { return 1; }
+                return 0;
+              })
+              break;
+          case "businessUnit":
+            this.resp.sort(function(a:any, b:any){
+              if(a.businessUnit > b.businessUnit) { return -1; }
+              if(a.businessUnit < b.businessUnit) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvAmministrato":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvAmministrato > b.ctvAmministrato) { return -1; }
+              if(a.ctvAmministrato < b.ctvAmministrato) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvAssicurativo":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvAssicurativo > b.ctvAssicurativo) { return -1; }
+              if(a.ctvAssicurativo < b.ctvAssicurativo) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvDiretto":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvDiretto > b.ctvDiretto) { return -1; }
+              if(a.ctvDiretto < b.ctvDiretto) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvGestito":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvGestito > b.ctvGestito) { return -1; }
+              if(a.ctvGestito < b.ctvGestito) { return 1; }
+              return 0;
+            })
+            break;
+          case "ctvTotale":
+            this.resp.sort(function(a:any, b:any){
+              if(a.ctvTotale > b.ctvTotale) { return -1; }
+              if(a.ctvTotale < b.ctvTotale) { return 1; }
+              return 0;
+            })
+            break;
+          default:
+              console.log("Error");
+              break;
+      }
+    }
+    this.arrayTemp = this.resp;   
+    if(this.nominativo != null){
+      this.arrayTemp = this.resp.filter(
+        (row: any) => row.nominativoCliente.toLowerCase().includes(this.nominativo.toLowerCase())
+        
+      );
+    }
+    if(this.ndgMin != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(row.ndgCliente, this.ndgMin)
+      );
+    }
+    if(this.ndgMax != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(this.ndgMax, row.ndgCliente)
+      );
+    }
+    if(this.businessUnitMin != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(row.businessUnit, this.businessUnitMin)
+      );
+    }
+    if(this.businessUnitMax != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(this.businessUnitMax, row.businessUnit)
+      );
+    }
+    if(this.ctvGestitoMin != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(row.ctvGestito, this.ctvGestitoMin)
+      );
+    }
+    if(this.ctvGestitoMax != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(this.ctvGestitoMax, row.ctvGestito)
+      );
+    }
+    if(this.ctvAmministrativoMin != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(row.ctvAmministrato, this.ctvAmministrativoMin)
+      );
+    }
+    if(this.ctvAmministrativoMax != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(this.ctvAmministrativoMax, row.ctvAmministrato)
+      );
+    }
+    if(this.ctvAssicuratoMin!= null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(row.ctvAssicurativo, this.ctvAssicuratoMin)
+      );
+    }
+    if(this.ctvAssicuratoMax != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(this.ctvAssicuratoMax, row.ctvAssicurativo)
+      );
+    }
+    if(this.ctvDirettoMin != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(row.ctvDiretto, this.ctvDirettoMin)
+      );
+    }
+    if(this.ctvDirettoMax != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(this.ctvDirettoMax, row.ctvDiretto)
+      );
+    }
+    if(this.ctvTotaleMin != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(row.ctvTotale, this.ctvTotaleMin)
+      );
+    }
+    if(this.ctvTotaleMax != null){
+      this.arrayTemp = this.arrayTemp.filter(
+        (row: any) => this.filterNumber(this.ctvTotaleMax, row.ctvTotale)
+      );
+    }
+
+    if(this.elemPerPage == null){
+      this.elemPerPage = 10;
+    }
+
+    this.tempStart = (this.currentPage * this.elemPerPage) - this.elemPerPage;
+    this.tempEnd = (this.currentPage * this.elemPerPage);
+
+    this.rows = this.arrayTemp.slice(this.tempStart, this.tempEnd);
+    this.dataSourceLength = this.resp.length;
+
+    this.lengthMenu = Math.ceil(this.dataSourceLength/this.elemPerPage);
+    for (let i = 1; i <= this.lengthMenu; i++) {
+      this.menu[i] = i;
+    }
+    
+    
+  }
+
+
   updateTable(newRow:any){
+
     this.resp.push(newRow);
-    console.log(newRow);
     
     this.ngOnInit();
     

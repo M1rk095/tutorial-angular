@@ -10,26 +10,26 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class NewRowDialogComponent implements OnInit {
 
-  newNominativoCliente: any = '';
-  newNdgCliente: any ='';
-  newBusinessUnit: any = '';
-  newCtvGestito: any = '';
-  newCtvAmministrato: any = '';
-  newCtvAssicurativo: any = '';
-  newCtvDiretto: any = '';
-  newCtvTotale: any = '';
-  newListaAzioni: any;
+  nominativoCliente: any = '';
+  ndgCliente: any ='';
+  businessUnit: any = '';
+  ctvGestito: any = '';
+  ctvAmministrato: any = '';
+  ctvAssicurativo: any = '';
+  ctvDiretto: any = '';
+  ctvTotale: any = '';
+  listaAzioni: any;
 
   addRow = new FormGroup({
-    newNominativoCliente: new FormControl(),
-    newNdgCliente: new FormControl(),
-    newBusinessUnit: new FormControl(),
-    newCtvGestito: new FormControl(),
-    newCtvAmministrato: new FormControl(), 
-    newCtvAssicurativo: new FormControl(), 
-    newCtvDiretto: new FormControl(), 
-    newCtvTotale: new FormControl(),
-    newListaAzioni: new FormControl()
+    nominativoCliente: new FormControl(),
+    ndgCliente: new FormControl(),
+    businessUnit: new FormControl(),
+    ctvGestito: new FormControl(),
+    ctvAmministrato: new FormControl(), 
+    ctvAssicurativo: new FormControl(), 
+    ctvDiretto: new FormControl(), 
+    ctvTotale: new FormControl(),
+    listaAzioni: new FormControl()
   });
 
 
