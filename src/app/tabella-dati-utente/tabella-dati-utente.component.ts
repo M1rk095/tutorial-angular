@@ -12,9 +12,9 @@ export class TabellaDatiUtenteComponent implements OnInit {
 
   rows: any = [];
   headers = ["NOMINATIVO", "NDG", "BUSINESS UNIT", "CTV AMMINISTRATO", 
-    "CTV ASSICURATO", "CTV DIRETTO", "CTV GESTITO", "CTV TOTALE"];
+    "CTV ASSICURATO", "CTV DIRETTO", "CTV GESTITO", "CTV TOTALE", "AZIONI"];
   indexHeaders = ["nominativoCliente", "ndgCliente", "businessUnit", "ctvAmministrato", 
-      "ctvAssicurativo", "ctvDiretto", "ctvGestito", "ctvTotale"];
+      "ctvAssicurativo", "ctvDiretto", "ctvGestito", "ctvTotale", "azioni"];
   
   mapHeaders = new Map<string, string>([
         ["NOMINATIVO", "nominativoCliente"],

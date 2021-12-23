@@ -76,6 +76,14 @@ table, th , td {
     font-weight: 900;
 }
 
+
+
+.azioni-si{
+    display: flex;
+    flex-direction: column;
+}
+
+
 #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -113,6 +121,22 @@ table, th , td {
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.button-elimina{
+    background-color: #04AA6D;;
+    border: 2px solid green;
+    border-radius: 5px;
+    color: white;
+    padding: 1px 3px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4x 2px;
+    cursor: pointer;
+}
+
 
 .button-form-mat {
     background-color: #04AA6D;

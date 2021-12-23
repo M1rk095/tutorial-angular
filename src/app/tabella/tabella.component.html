@@ -86,8 +86,14 @@
           </th>
         </tr>
         <tr *ngFor = "let row of rows">
-          <td *ngFor = "let column of indexHeaders">
+          <td *ngFor = "let column of indexHeaders; let i = index">
             {{row[column]}}
+            <ng-template [ngIf]="i === 8">
+              <div class="azioni-si" *ngFor = "let lista of [0]">
+                <button class="button-elimina">Elimina</button>
+                <button>Modifica</button>
+              </div>
+            </ng-template>
           </td>
         </tr>
       </ng-container>
@@ -98,7 +104,8 @@
       <ng-container >
         <div class="arrow" (click)="goBack()"><</div>
         <div *ngFor = "let m of menu; let i = index" 
-          [ngClass]="{'currentPage': i === currentPage}" (click)="onSelect(m)">
+          [ngClass]="{'currentPage': i === currentPage}"
+          (click)="onSelect(m)">
             &nbsp;&nbsp; {{m}} &nbsp;&nbsp; 
         </div>
         <div class="arrow" (click)="goForward()">></div>
