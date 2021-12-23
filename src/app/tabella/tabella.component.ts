@@ -51,7 +51,7 @@ export class TabellaComponent implements OnInit {
   modificaRiga(row: any): void{
     const dialogRef = this.dialog.open(NewRowDialogComponent, {
       data: {
-        row: row
+          nominativoCliente: row.nominativoCliente      
       }
     });
     dialogRef.afterClosed().subscribe(res => {

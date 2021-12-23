@@ -20,6 +20,9 @@ export class NewRowDialogComponent implements OnInit {
   ctvTotale: any = '';
   listaAzioni: any;
 
+  prova:any;
+
+
   addRow = new FormGroup({
     nominativoCliente: new FormControl(),
     ndgCliente: new FormControl(),
@@ -36,13 +39,19 @@ export class NewRowDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NewRowDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public row: any
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public row: any) {
+
+
+
+     }
 
   ngOnInit(): void {
     if(this.row != null){
-      console.log(this.row);
+      console.log(this.row.nominativoCliente);
+      this.nominativoCliente = this.row.nominativoCliente;
     }
+    
+    
   }
 
   onSubmit() {
