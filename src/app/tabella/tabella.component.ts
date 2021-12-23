@@ -31,6 +31,7 @@ export class TabellaComponent implements OnInit {
   @Output() newFilter = new EventEmitter();
   @Output() clearForm = new EventEmitter();
   @Output() newRowEvent = new EventEmitter();
+  @Output() deleteRowEvent = new EventEmitter();
   
   constructor(private tabellaService:TabellaService,
     public dialog: MatDialog) { }
@@ -103,7 +104,9 @@ export class TabellaComponent implements OnInit {
     this.flagClear = "clear";
   }
 
-
+  eliminaRiga(row:any){
+    this.deleteRowEvent.emit(row);
+  }
 
 }
 

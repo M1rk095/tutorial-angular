@@ -340,11 +340,14 @@ export class TabellaDatiUtenteComponent implements OnInit {
 
 
   updateTable(newRow:any){
-
     this.resp.push(newRow);
-    
+    this.ngOnInit(); 
+  }
+
+  deleteRowTable(row:any){
+    const index = this.resp.indexOf(row, 0);
+    this.resp.splice(index, 1);
     this.ngOnInit();
-    
   }
 
   changeCurrentPage(newCurrentPage: any) {
