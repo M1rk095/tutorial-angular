@@ -3,6 +3,7 @@ import { TabellaService } from '../tabella.service';
 import { EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewRowDialogComponent } from '../new-row-dialog/new-row-dialog.component';
+import { clear } from 'console';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class TabellaComponent implements OnInit {
   flagClear: any = "";
   selectedColumn: any = "";
   newRow: any;
+  flagApriFiltri: any = false;
 
   @Input() rows: any;
   @Input() headers: any;
@@ -32,12 +34,14 @@ export class TabellaComponent implements OnInit {
   @Output() clearForm = new EventEmitter();
   @Output() newRowEvent = new EventEmitter();
   @Output() deleteRowEvent = new EventEmitter();
+  @Output() loadEvent = new EventEmitter();
   
   constructor(private tabellaService:TabellaService,
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    
+    this.load();
+    console.log("Jn");
   }
 
   aggiungiRiga(): void{
@@ -128,6 +132,19 @@ export class TabellaComponent implements OnInit {
 
   eliminaRiga(row:any){
     this.deleteRowEvent.emit(row);
+  }
+
+  load(){
+    this.loadEvent.emit();
+  }
+
+  apriFiltri(){
+    if(this.flagApriFiltri){
+      this.flagApriFiltri = false;
+    }else{
+      this.flagApriFiltri = true;
+    }
+    this.load();
   }
 
 }

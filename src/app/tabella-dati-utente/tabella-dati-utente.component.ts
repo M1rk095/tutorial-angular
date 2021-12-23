@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TabellaService } from '../tabella.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { filter } from 'rxjs';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-tabella-dati-utente',
@@ -66,14 +67,11 @@ export class TabellaDatiUtenteComponent implements OnInit {
     newRowToPush:any;
     newRowFlag: any = false;
     resp: any = [];
-    dataFlag: any = true;
+    dataFlag: any = false;
 
-
-    
   orderColumn: any = "normale";
   orderColumnFlag: any = 0;
   columnToOrder: any = "";
-
   
   elemPerPage: any = 10;
   menu: any = [];
@@ -87,15 +85,14 @@ export class TabellaDatiUtenteComponent implements OnInit {
 
 
 
-  constructor(private tabellaService:TabellaService) { }
+  constructor(private tabellaService:TabellaService) {}
 
   ngOnInit(): void {
     
-    if(this.dataFlag){
+    if(!this.dataFlag){
       this.getData();
-      
     }
-    this.dataFlag = false;
+    this.dataFlag = true;
     this.createTable();
     
   }
@@ -106,10 +103,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
     this.tabellaService.getData().subscribe(
       (response: any) => {  
         this.resp = response;
-  
       });
-      
-      
   }
 
   createTable(){
@@ -388,16 +382,19 @@ export class TabellaDatiUtenteComponent implements OnInit {
     
   }
 
-  filterNumber(number1:any, number2:any) { 
+filterNumber(number1:any, number2:any) { 
     if(number1 > number2){
       return true; 
     }
     return false;
  } 
-           
+    
+load(){
+  this.ngOnInit();
+}
  
 
-  clear(resetElemPerPage: any){
+clear(resetElemPerPage: any){
     this.elemPerPage = resetElemPerPage;
     console.log(this.elemPerPage);
     window.location.reload();

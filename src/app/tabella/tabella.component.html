@@ -1,78 +1,80 @@
 <div class="container">
 
-  <button class="button-form-mat" mat-button >Apri filtri</button>
-  <div class="container-form">
-    <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" >
-      <div class="filter">
-        <label for="nominativo">Nominativo: </label>
-        <input id="nominativo" type="text" formControlName="nominativo">
-      </div>  
-      <div class="filter">
-        <label for="ndgMin">NDG Min: </label>
-        <input id="ndgMin" type="number" formControlName="ndgMin">
-      </div>
-      <div class="filter">
-        <label for="ndgMax">NDG Max: </label>
-        <input id="ndgMax" type="number" formControlName="ndgMax">
-      </div>
-      <div class="filter">
-        <label for="businessUnitMin">Business Unit Min: </label>
-        <input id="businessUnitMin" type="number" formControlName="businessUnitMin">
-      </div>
-      <div class="filter">
-        <label for="businessUnitMax">Business Unit Max: </label>
-        <input id="businessUnitMax" type="number" formControlName="businessUnitMax">
-      </div>
-      <div class="filter">
-        <label for="ctvAmministrativoMin">CTV Amministrativo Min: </label>
-        <input id="ctvAmministrativoMin" type="number" formControlName="ctvAmministrativoMin">
-      </div>
-      <div class="filter">
-        <label for="ctvAmministrativoMax">CTV Amministrativo Max: </label>
-        <input id="ctvAmministrativoMax" type="number" formControlName="ctvAmministrativoMax">
-      </div>
-      <div class="filter">
-        <label for="ctvAssicuratoMin">CTV Assicurato Min:</label>
-        <input id="ctvAssicuratoMin" type="number" formControlName="ctvAssicuratoMin">
-      </div>
-      <div class="filter">
-        <label for="ctvAssicuratMax">CTV Assicurato Max: </label>
-        <input id="ctvAssicuratoMax" type="number" formControlName="ctvAssicuratoMax">
-      </div>
-      <div class="filter">
-        <label for="ctvDirettoMin">CTV Diretto Min:</label>
-        <input id="ctvDirettoMin" type="number" formControlName="ctvDirettoMin">
-      </div>
-      <div class="filter"> 
-        <label for="ctvDirettoMax">CTV Diretto Max: </label>
-        <input id="ctvDirettoMax" type="number" formControlName="ctvDirettoMax">
-      </div>
-      <div class="filter">
-        <label for="ctvGestitoMin">CTV Gestito Min:</label>
-        <input id="ctvGestitoMin" type="number" formControlName="ctvGestitoMin">
-      </div>
-      <div class="filter">
-        <label for="ctvGestitoMax">CTV Gestito Max: </label>
-        <input id="ctvGestitoMax" type="number" formControlName="ctvGestitoMax">
-      </div>
-      <div class="filter">
-        <label for="ctvTotaleMin">CTV Totale Min:</label>
-        <input id="ctvTotaleMin" type="number" formControlName="ctvTotaleMin">
-      </div> 
-      <div class="filter"> 
-        <label for="ctvTotaleMax">CTV Totale Max: </label>
-        <input id="ctvTotaleMax" type="number" formControlName="ctvTotaleMax">
-      </div>
-      <div class="filter"> 
-        <label for="numElem">Numero di elementi per riga: </label>
-        <input id="numElem" type="number" formControlName="numElem">
-      </div>
-      <div class="container-button">
-        <button class="button-form-mat" mat-button >Filter</button>
-        <button class="button-form-mat" mat-button (click)="clear()">Clear</button>
-        <button class="button-form-mat" mat-button (click)="aggiungiRiga()">Aggiungi riga</button>
-      </div>
-    </form>
+  <button class="button-form-mat" mat-button (click)="apriFiltri()">Apri filtri</button>
+  <div class="text" *ngIf=flagApriFiltri>
+    <div class="container-form">
+      <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" >
+        <div class="filter">
+          <label for="nominativo">Nominativo: </label>
+          <input id="nominativo" type="text" formControlName="nominativo">
+        </div>  
+        <div class="filter">
+          <label for="ndgMin">NDG Min: </label>
+          <input id="ndgMin" type="number" formControlName="ndgMin">
+        </div>
+        <div class="filter">
+          <label for="ndgMax">NDG Max: </label>
+          <input id="ndgMax" type="number" formControlName="ndgMax">
+        </div>
+        <div class="filter">
+          <label for="businessUnitMin">Business Unit Min: </label>
+          <input id="businessUnitMin" type="number" formControlName="businessUnitMin">
+        </div>
+        <div class="filter">
+          <label for="businessUnitMax">Business Unit Max: </label>
+          <input id="businessUnitMax" type="number" formControlName="businessUnitMax">
+        </div>
+        <div class="filter">
+          <label for="ctvAmministrativoMin">CTV Amministrativo Min: </label>
+          <input id="ctvAmministrativoMin" type="number" formControlName="ctvAmministrativoMin">
+        </div>
+        <div class="filter">
+          <label for="ctvAmministrativoMax">CTV Amministrativo Max: </label>
+          <input id="ctvAmministrativoMax" type="number" formControlName="ctvAmministrativoMax">
+        </div>
+        <div class="filter">
+          <label for="ctvAssicuratoMin">CTV Assicurato Min:</label>
+          <input id="ctvAssicuratoMin" type="number" formControlName="ctvAssicuratoMin">
+        </div>
+        <div class="filter">
+          <label for="ctvAssicuratMax">CTV Assicurato Max: </label>
+          <input id="ctvAssicuratoMax" type="number" formControlName="ctvAssicuratoMax">
+        </div>
+        <div class="filter">
+          <label for="ctvDirettoMin">CTV Diretto Min:</label>
+          <input id="ctvDirettoMin" type="number" formControlName="ctvDirettoMin">
+        </div>
+        <div class="filter"> 
+          <label for="ctvDirettoMax">CTV Diretto Max: </label>
+          <input id="ctvDirettoMax" type="number" formControlName="ctvDirettoMax">
+        </div>
+        <div class="filter">
+          <label for="ctvGestitoMin">CTV Gestito Min:</label>
+          <input id="ctvGestitoMin" type="number" formControlName="ctvGestitoMin">
+        </div>
+        <div class="filter">
+          <label for="ctvGestitoMax">CTV Gestito Max: </label>
+          <input id="ctvGestitoMax" type="number" formControlName="ctvGestitoMax">
+        </div>
+        <div class="filter">
+          <label for="ctvTotaleMin">CTV Totale Min:</label>
+          <input id="ctvTotaleMin" type="number" formControlName="ctvTotaleMin">
+        </div> 
+        <div class="filter"> 
+          <label for="ctvTotaleMax">CTV Totale Max: </label>
+          <input id="ctvTotaleMax" type="number" formControlName="ctvTotaleMax">
+        </div>
+        <div class="filter"> 
+          <label for="numElem">Numero di elementi per riga: </label>
+          <input id="numElem" type="number" formControlName="numElem">
+        </div>
+        <div class="container-button">
+          <button class="button-form-mat" mat-button >Filter</button>
+          <button class="button-form-mat" mat-button (click)="clear()">Clear</button>
+          <button class="button-form-mat" mat-button (click)="aggiungiRiga()">Aggiungi riga</button>
+        </div>
+      </form>
+    </div>
   </div>
 
 
@@ -91,7 +93,7 @@
         </tr>
         <tr *ngFor = "let row of rows">
           <td *ngFor = "let column of indexHeaders; let i = index">
-            {{row[column]}}
+            <div>{{row[column]}}</div>
             <ng-template [ngIf]="i === 8">
               <div class="azioni-si" *ngFor = "let lista of [0]">
                 <button class="button-elimina" (click)="eliminaRiga(row)">Elimina</button>
