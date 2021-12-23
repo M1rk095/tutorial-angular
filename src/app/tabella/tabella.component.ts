@@ -51,12 +51,21 @@ export class TabellaComponent implements OnInit {
   modificaRiga(row: any): void{
     const dialogRef = this.dialog.open(NewRowDialogComponent, {
       data: {
-          nominativoCliente: row.nominativoCliente      
+          nominativoCliente: row.nominativoCliente,
+          ndgCliente: row.ndgCliente,
+          businessUnit: row.businessUnit,
+          ctvGestito: row.ctvGestito,
+          ctvAmministrato: row.ctvAmministrato,
+          ctvAssicurativo: row.ctvAssicurativo, 
+          ctvDiretto: row.ctvDiretto, 
+          ctvTotale: row.ctvTotale,
+          listaAzioni: []
       }
     });
     dialogRef.afterClosed().subscribe(res => {
-      // this.newRow = res;
-      // this.newRowEvent.emit(this.newRow);
+      const modifiedRow = res;
+      this.deleteRowEvent.emit(modifiedRow);
+      this.newRowEvent.emit(modifiedRow);
     });
   }
 

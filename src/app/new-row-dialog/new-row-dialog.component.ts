@@ -18,7 +18,7 @@ export class NewRowDialogComponent implements OnInit {
   ctvAssicurativo: any = '';
   ctvDiretto: any = '';
   ctvTotale: any = '';
-  listaAzioni: any;
+  listaAzioni: any = [];
 
   prova:any;
 
@@ -47,8 +47,14 @@ export class NewRowDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.row != null){
-      console.log(this.row.nominativoCliente);
       this.nominativoCliente = this.row.nominativoCliente;
+      this.ndgCliente = this.row.ndgCliente;
+      this.businessUnit =  this.row.businessUnit;
+      this.ctvGestito = this.row.ctvGestito;
+      this.ctvAmministrato = this.row.ctvAmministrato;
+      this.ctvAssicurativo = this.row.ctvAssicurativo;
+      this.ctvDiretto = this.row.ctvDiretto;
+      this.ctvTotale = this.row.ctvTotale;
     }
     
     
