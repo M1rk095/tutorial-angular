@@ -1,4 +1,6 @@
 <div class="container">
+
+  <button class="button-form-mat" mat-button >Apri filtri</button>
   <div class="container-form">
     <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" >
       <div class="filter">
@@ -65,9 +67,11 @@
         <label for="numElem">Numero di elementi per riga: </label>
         <input id="numElem" type="number" formControlName="numElem">
       </div>
-      <button class="button-form">Filter</button>
-      <button class="button-form" (click)="clear()">Clear</button>
-      <button class="button-form-mat" mat-button (click)="aggiungiRiga()">Aggiungi riga</button>
+      <div class="container-button">
+        <button class="button-form-mat" mat-button >Filter</button>
+        <button class="button-form-mat" mat-button (click)="clear()">Clear</button>
+        <button class="button-form-mat" mat-button (click)="aggiungiRiga()">Aggiungi riga</button>
+      </div>
     </form>
   </div>
 

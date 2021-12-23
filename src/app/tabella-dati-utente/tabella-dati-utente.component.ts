@@ -335,7 +335,6 @@ export class TabellaDatiUtenteComponent implements OnInit {
       this.menu[i] = i;
     }
     
-    
   }
 
 
@@ -398,11 +397,12 @@ export class TabellaDatiUtenteComponent implements OnInit {
            
  
 
-//   clear(flagClear:any){
-//     this.elemPerPage = 10;
-//     console.log(flagClear);
-//     this.ngOnInit();
-// }
+  clear(resetElemPerPage: any){
+    this.elemPerPage = resetElemPerPage;
+    console.log(this.elemPerPage);
+    window.location.reload();
+    this.ngOnInit();
+}
 
 
 

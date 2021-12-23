@@ -123,6 +123,7 @@ export class TabellaComponent implements OnInit {
 
   clear(){
     this.flagClear = "clear";
+    this.clearForm.emit(10);
   }
 
   eliminaRiga(row:any){

@@ -3,10 +3,11 @@
     flex-direction: column;
     align-items: center;
     
-    background-color: #c4eec5;
+    background-color: #e3f3e4;
 }
 
 .container-filter{
+    
     width: 80%;
     height: 80%;
     border: 2px solid green;
@@ -22,6 +23,7 @@
     display: flex;
     justify-content: space-between;
     border: 2px solid green;
+    background-color: #d0fae6;
     border-radius: 5px;
 }
 
@@ -29,13 +31,20 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 5px;
     font-size: 16px;
+}
+
+.container-button{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 table, th , td {
     text-align: center;
     border-collapse: collapse;
     padding: 5px;
+    border: green;
   }
   
 .imageUp{
@@ -90,14 +99,16 @@ table, th , td {
     width: 100%;
   }
   
+
+  
   #customers td, #customers th {
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     padding: 8px;
   }
   
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  #customers tr:nth-child(even){background-color:  #d0fae6;}
   
-  #customers tr:hover {background-color: #ddd;}
+  #customers tr:hover {background-color: #b3d8c7;}
   
   #customers th {
     padding-top: 12px;
@@ -105,6 +116,11 @@ table, th , td {
     text-align: left;
     background-color: #04AA6D;
     color: white;
+    border: 2px solid green;
+  }
+
+  #customers td {
+    border: 2px solid black;
   }
 
 .button-form {
@@ -139,6 +155,9 @@ table, th , td {
 
 
 .button-form-mat {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
     background-color: #04AA6D;
     border: 2px solid green;
     color: white;
