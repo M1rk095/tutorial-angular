@@ -36,12 +36,13 @@ export class NewRowDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NewRowDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public message: string
+    @Inject(MAT_DIALOG_DATA) public row: any
   ) { }
 
   ngOnInit(): void {
-
-    
+    if(this.row != null){
+      console.log(this.row);
+    }
   }
 
   onSubmit() {

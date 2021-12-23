@@ -48,6 +48,18 @@ export class TabellaComponent implements OnInit {
     });
   }
 
+  modificaRiga(row: any): void{
+    const dialogRef = this.dialog.open(NewRowDialogComponent, {
+      data: {
+        row: row
+      }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      // this.newRow = res;
+      // this.newRowEvent.emit(this.newRow);
+    });
+  }
+
   selectedCurrentPage?: any;
   onSelect(newCurrentPage: any): void {
     this.selectedCurrentPage = newCurrentPage;

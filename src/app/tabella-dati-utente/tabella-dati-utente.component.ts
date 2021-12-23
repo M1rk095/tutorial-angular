@@ -340,8 +340,11 @@ export class TabellaDatiUtenteComponent implements OnInit {
 
 
   updateTable(newRow:any){
-    this.resp.push(newRow);
-    this.ngOnInit(); 
+    if(newRow.nominativoCliente != undefined){
+      console.log(newRow.nominativoCliente);
+      this.resp.push(newRow);
+      this.ngOnInit(); 
+    }
   }
 
   deleteRowTable(row:any){

@@ -91,7 +91,7 @@
             <ng-template [ngIf]="i === 8">
               <div class="azioni-si" *ngFor = "let lista of [0]">
                 <button class="button-elimina" (click)="eliminaRiga(row)">Elimina</button>
-                <button>Modifica</button>
+                <button class="button-elimina-mat" mat-button (click)="modificaRiga(row)">Modifica</button>
               </div>
             </ng-template>
           </td>
