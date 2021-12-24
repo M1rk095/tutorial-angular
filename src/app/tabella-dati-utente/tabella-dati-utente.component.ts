@@ -103,6 +103,7 @@ export class TabellaDatiUtenteComponent implements OnInit {
     this.tabellaService.getData().subscribe(
       (response: any) => {  
         this.resp = response;
+        this.createTable();
       });
   }
 
